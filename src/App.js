@@ -12,8 +12,9 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        <img src="main_logo.png" className="App-logo" alt="logo" />
         <p>Stardew Valley Server Finder</p>
+
       </header>
       <body>
         <table className="my-table">
