@@ -1,0 +1,46 @@
+{
+"test":{
+"data" : [
+    {
+      "user": "CompSciLauren",
+      "status": "Hosting",
+      "timezone": "GMT +4",
+      "playersneeded": 3,
+      "platform": "Xbox", 
+      "mods": "None",
+      "invitecode": "DM me",
+      "other": "Test entry #1: looking for players!"
+    },
+    {
+      "user": "GoldnWarir",
+      "status": "Hosting",
+      "timezone": "GMT +6",
+      "playersneeded": 3,
+      "platform": "PC", 
+      "mods": "None",
+      "invitecode": "super",
+      "other": "Test entry #2: looking for players!"
+    },
+    {
+      "user": "Grant Le Stew",
+      "status": "Searching",
+      "timezone": "GMT +4",
+      "playersneeded": 2,
+      "platform": "PC", 
+      "mods": "Insta-Money Mod",
+      "invitecode": "DM me",
+      "other": "Test entry #3: looking for games with the Insta-money mod!"
+    },
+    {
+      "user": "Pinnochio",
+      "status": "Searching",
+      "timezone": "GMT +4",
+      "playersneeded": 2,
+      "platform": "Switch", 
+      "mods": "None",
+      "invitecode": "DM me",
+      "other": "Test entry #4: looking for people to teach me the game!"
+    }
+  ]
+}
+}
