@@ -40,7 +40,47 @@
       "mods": "None",
       "invitecode": "DM me",
       "other": "Test entry #4: looking for people to teach me the game!"
-    }
+    },
+    {
+        "user": "The One",
+        "status": "Hosting",
+        "timezone": "GMT +4",
+        "playersneeded": 1,
+        "platform": "Switch", 
+        "mods": "None",
+        "invitecode": "DM me",
+        "other": "Test entry #5: I am the one. Fight me."
+      },
+      {
+        "user": "Ace",
+        "status": "Hosting",
+        "timezone": "GMT +1",
+        "playersneeded": 3,
+        "platform": "Xbox", 
+        "mods": "None",
+        "invitecode": "8ceOfSpades",
+        "other": "Test entry #6: Eating pizza rn brb. Join whenever."
+      },
+      {
+        "user": "Ace's Pizza",
+        "status": "Searching",
+        "timezone": "GMT +1",
+        "playersneeded": 1,
+        "platform": "PC", 
+        "mods": "Pizza-Time Mod",
+        "invitecode": "DM me",
+        "other": "Test entry #7: I'n the pizza Ace is eating."
+      },
+      {
+        "user": "Stardeeeeeeeeeew",
+        "status": "Hosting",
+        "timezone": "GMT +5",
+        "playersneeded": 2,
+        "platform": "Xbox", 
+        "mods": "None",
+        "invitecode": "DM me",
+        "other": "Test entry #8: I made the game!"
+      }
   ]
 }
 }
