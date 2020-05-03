@@ -1,177 +1,109 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {Component} from 'react';
+import ReactDom from 'react-dom';
 import './App.css';
-import TableFilter from 'tablefilter';
+import SampleData from './data.json';
+import TableFilter from 'react-table-filter';
+import {} from './styles.css';
+import {} from './example.scss';
 
-function App() {
+class App extends Component {
   // var tf = new TableFilter(document.querySelector('.my-table'), {
   //   base_path: 'path/to/my/scripts/tablefilter/',
   // });
   // tf.init();
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      'data': SampleData.test.data,
+    };
+    this._filterUpdated = this._filterUpdated.bind(this);
+  }
+
+  _filterUpdated(newData, filtersObject) {
+    this.setState({
+      'data' : newData,
+    });
+  }
+
+    render(){
+      const data = this.state.data;
+      const elementsHtml = data.map((item, index) => {
+        return (
+          <tr key={'row_'+index}>
+            <td className="cell">
+              {item.user}
+            </td>
+            <td className="cell">
+              {item.status}
+            </td>
+            <td className="cell">
+              {item.timezone}
+            </td>
+            <td className="cell">
+              {item.playersneeded}
+            </td>
+            <td className="cell">
+              {item.platform}
+            </td>
+            <td className="cell">
+              {item.mods}
+            </td>
+            <td className="cell">
+              {item.invitecode}
+            </td>
+            <td className="cell">
+              {item.other}
+            </td>
+          </tr>
+        );
+      });
   return (
     <div className="App">
       <header className="App-header">
         <img src="main_logo.png" className="App-logo" alt="logo" />
         <p>Stardew Valley Server Finder</p>
-
       </header>
-      <body>
-        <table className="my-table">
-          <tr>
-            <th>User</th>
-            <th>Status</th>
-            <th>Timezone</th>
-            <th>Players Needed</th>
-            <th>Platform</th>
-            <th>Mods</th>
-            <th>Invite Code</th>
-            <th>Other</th>
-          </tr>
-          <tr>
-            <td>CompSciLauren</td>
-            <td>Hosting</td>
-            <td>GMT +4</td>
-            <td>3</td>
-            <td>XBox</td>
-            <td>None</td>
-            <td>DM me</td>
-            <td>
-              I can vc, I have experience and speak fluent english. Active
-              daily. Timezone must be close to mine. I'd love to join people who
-              are active and can vc, thanks.
-            </td>
-          </tr>
-          <tr>
-            <td>CompSciLauren</td>
-            <td>Hosting</td>
-            <td>GMT +6</td>
-            <td>3</td>
-            <td>PC</td>
-            <td>None</td>
-            <td>DM me</td>
-            <td>
-              I can vc, I have experience and speak fluent english. Active
-              daily. Timezone must be close to mine. I'd love to join people who
-              are active and can vc, thanks.
-            </td>
-          </tr>
-          <tr>
-            <td>CompSciLauren</td>
-            <td>Hosting</td>
-            <td>GMT +4</td>
-            <td>2</td>
-            <td>PC</td>
-            <td>None</td>
-            <td>DM me</td>
-            <td>
-              I can vc, I have experience and speak fluent english. Active
-              daily. Timezone must be close to mine. I'd love to join people who
-              are active and can vc, thanks.
-            </td>
-          </tr>
-          <tr>
-            <td>CompSciLauren</td>
-            <td>Hosting</td>
-            <td>GMT +4</td>
-            <td>3</td>
-            <td>PC or Switch</td>
-            <td>None</td>
-            <td>DM me</td>
-            <td>
-              I can vc, I have experience and speak fluent english. Active
-              daily. Timezone must be close to mine. I'd love to join people who
-              are active and can vc, thanks.
-            </td>
-          </tr>
-          <tr>
-            <td>CompSciLauren</td>
-            <td>Hosting</td>
-            <td>GMT+8</td>
-            <td>2</td>
-            <td>XBox</td>
-            <td>None</td>
-            <td>DM me</td>
-            <td>
-              I can vc, I have experience and speak fluent english. Active
-              daily. Timezone must be close to mine. I'd love to join people who
-              are active and can vc, thanks.
-            </td>
-          </tr>
-          <tr>
-            <td>CompSciLauren</td>
-            <td>Hosting</td>
-            <td>GMT +4</td>
-            <td>2</td>
-            <td>Switch</td>
-            <td>None</td>
-            <td>DM me</td>
-            <td>
-              I can vc, I have experience and speak fluent english. Active
-              daily. Timezone must be close to mine. I'd love to join people who
-              are active and can vc, thanks.
-            </td>
-          </tr>
-          <tr>
-            <td>CompSciLauren</td>
-            <td>Hosting</td>
-            <td>GMT +8</td>
-            <td>1</td>
-            <td>PC</td>
-            <td>None</td>
-            <td>DM me</td>
-            <td>
-              I can vc, I have experience and speak fluent english. Active
-              daily. Timezone must be close to mine. I'd love to join people who
-              are active and can vc, thanks.
-            </td>
-          </tr>
-          <tr>
-            <td>CompSciLauren</td>
-            <td>Hosting</td>
-            <td>GMT +6</td>
-            <td>3</td>
-            <td>PC</td>
-            <td>None</td>
-            <td>DM me</td>
-            <td>
-              I can vc, I have experience and speak fluent english. Active
-              daily. Timezone must be close to mine. I'd love to join people who
-              are active and can vc, thanks.
-            </td>
-          </tr>
-          <tr>
-            <td>CompSciLauren</td>
-            <td>Hosting</td>
-            <td>GMT +4</td>
-            <td>2</td>
-            <td>PC</td>
-            <td>None</td>
-            <td>DM me</td>
-            <td>
-              I can vc, I have experience and speak fluent english. Active
-              daily. Timezone must be close to mine. I'd love to join people who
-              are active and can vc, thanks.
-            </td>
-          </tr>
-          <tr>
-            <td>CompSciLauren</td>
-            <td>Hosting</td>
-            <td>GMT +4</td>
-            <td>1</td>
-            <td>PC</td>
-            <td>None</td>
-            <td>DM me</td>
-            <td>
-              I can vc, I have experience and speak fluent english. Active
-              daily. Timezone must be close to mine. I'd love to join people who
-              are active and can vc, thanks.
-            </td>
-          </tr>
-        </table>
-      </body>
+
+      <table>
+        <thread>
+          <TableFilter 
+            rows={data}
+            onFilterUpdate={this._filterUpdated}>
+              <th key="user" filterkey="user" className="cell" casesensitive={'true'} showsearch={'true'}>
+                User
+              </th>
+              <th key="status" filterkey="status" className="cell">
+                Status
+              </th>
+              <th key="timezone" filterkey="timezone" className="cell">
+                Timezone
+              </th>
+              <th key="playersneeded" filterkey="playersneeded" className="cell">
+                Players Needed
+              </th>
+              <th key="platform" filterkey="platform" className="cell">
+                Platform
+              </th>
+              <th key="mods" filterkey="mods" className="cell" casesensitive={'true'} showsearch={'true'}>
+                Mods
+              </th>
+              <th>
+                Invite Code
+              </th>
+              <th>
+                Other
+              </th>
+          </TableFilter>
+        </thread>
+        <tbody>
+          { elementsHtml }
+        </tbody>
+      </table>
     </div>
   );
+ }
 }
+
 
 export default App;
