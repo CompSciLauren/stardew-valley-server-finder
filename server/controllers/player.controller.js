@@ -12,7 +12,7 @@ exports.create = (req, res) => {
     });
   }
   console.log(req.body);
-  const Player = new Player({
+  const pplayer = new pplayer({
     id: req.body.id,
     username:  req.body.username,
     timezone: req.body.timezone,
@@ -23,16 +23,15 @@ exports.create = (req, res) => {
     date_modified: req.body.date_modified,
   });
   console.log(
-    '%s,%s,%s,%s',
-    Player.id,
-    Player.username,
-    Player.timezone,
-    Player.num_players,
-    Player.platform,
-    Player.mods,
-    Player.notes,
-    Player.dotes_modified
-
+    '%s,%s,%s,%s,%s,%s,%s,%s',
+    pplayer.id,
+    pplayer.username,
+    pplayer.timezone,
+    pplayer.num_players,
+    pplayer.platform,
+    pplayer.mods,
+    pplayer.notes,
+    pplayer.dotes_modified
   );
 
   // Save Player in the database
@@ -59,7 +58,7 @@ exports.findAll = (req, res) => {
 // Find a single Player with a Id
 exports.findPlayer = (req, res) => {
   console.log('look:', req.params.id);
-  Player.findByEmail(req.params.id, (err, data) => {
+  Player.findByID(req.params.id, (err, data) => {
     if (err) {
       if (err.kind === 'not_found') {
         res.status(404).send({

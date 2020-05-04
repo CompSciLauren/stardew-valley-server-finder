@@ -28,7 +28,7 @@ Player.create = (newPlayer, result) => {
   });
 };
 
-Player.findByEmail = (PlayerId, result) => {
+Player.findByID = (PlayerId, result) => {
   sql.query(`SELECT * FROM player WHERE id = ?`, PlayerId, (err, res) => {
     if (err) {
       console.log('error: ', err);
@@ -61,7 +61,7 @@ Player.getAll = result => {
 };
 
 Player.remove = (id, result) => {
-  sql.query('DELETE FROM player WHERE Email = ?', id, (err, res) => {
+  sql.query('DELETE FROM player WHERE id = ?', id, (err, res) => {
     if (err) {
       console.log('error: ', err);
       result(null, err);

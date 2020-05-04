@@ -15,8 +15,12 @@ app.get('/', (req, res) => {
 });
 
 require('./routes/player.routes.js')(app);
+require('./routes/playerServer.routes.js')(app);
+require('./routes/server.routes.js')(app);
 
 // set port, listen for requests
-app.listen(3000, () => {
-  console.log('Server is running on port 3000.');
+app.listen(8081, () => {
+  console.log('Server is running on port 8081.');
 });
+
+// use - localhost:8081/ - when connecting
