@@ -1,9 +1,9 @@
-/*usePlayer.js*/
+/*useServer.js*/
 
 import { useState, useEffect } from 'react';
 
-export default function usePlayer(personIdentifier) {
-  const [player, setPlayer] = useState([]);
+export default function useServer(personIdentifier) {
+  const [server, setServer] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   const emptyJson = {
@@ -16,7 +16,7 @@ export default function usePlayer(personIdentifier) {
     if (personIdentifier !== null) {
       setIsLoading(true);
 
-      fetch(`https://localhost:8081/player/${personIdentifier}`, {
+      fetch(`https://localhost:8081/server/${personIdentifier}`, {
         method: 'GET',
       })
         .then((response) => response.json())
@@ -26,9 +26,9 @@ export default function usePlayer(personIdentifier) {
 
           setIsLoading(false);
           if (responseJson[0] != null) {
-            setPlayer(responseJson);
+            setServer(responseJson);
           } else {
-            setPlayer(emptyJson);
+            setServer(emptyJson);
           }
 
         })
@@ -42,7 +42,7 @@ export default function usePlayer(personIdentifier) {
   }, [personIdentifier]);
 
   return {
-    player,
+    server,
     isLoading,
   };
 }
