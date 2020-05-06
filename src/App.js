@@ -81,7 +81,7 @@ const App = (props) => {
       </header>
 
       <table>
-        <thread>
+        <thead>
           <TableFilter rows={data} onFilterUpdate={_filterUpdated}>
             <th
               key="user"
@@ -116,7 +116,7 @@ const App = (props) => {
             <th>Invite Code</th>
             <th>Other</th>
           </TableFilter>
-        </thread>
+        </thead>
         <tbody>{elementsHtml}</tbody>
       </table>
     </div>
