@@ -2,11 +2,29 @@ import React, { useState } from 'react';
 import './App.css';
 import SampleData from './data.json';
 import TableFilter from 'react-table-filter';
+import usePlayer from '../src/hooks/usePlayer';
 import {} from './styles.css';
 import {} from './example.scss';
 
 const App = (props) => {
   const [data, setData] = useState(SampleData.test.data);
+
+  const { player } = usePlayer();
+
+  let listOfPlayers = player.map((player) => {
+    return [
+      player.id,
+      player.username,
+      player.timezone,
+      player.num_players,
+      player.platform,
+      player.mods,
+      player.notes,
+    ];
+  });
+
+  console.log('hit');
+  console.log(listOfPlayers);
 
   // const [data, setData ] = useState({ firstName: 'daniel', lastName: 'vu' })
   // const [firstName, setFirstName] = useState('daniel');
