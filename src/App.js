@@ -16,8 +16,27 @@ const App = (props) => {
   let listOfPlayerDataToDisplay = [];
   for (let i = 0; i < player.length; i++) {
     for (let j = 0; j < playerStatus.length; j++) {
-      if (player[i].id == playerStatus[j].player_id) {
+      if (player[i].id === playerStatus[j].player_id) {
         listOfPlayerDataToDisplay.push([player[i], playerStatus[j]]);
+        if (listOfPlayerDataToDisplay[i][1].status_id === 1) {
+          listOfPlayerDataToDisplay[i][1].status_id = 'Hosting';
+        } else {
+          listOfPlayerDataToDisplay[i][1].status_id = 'Joining';
+        }
+
+        if (listOfPlayerDataToDisplay[i][0].mods === '') {
+          listOfPlayerDataToDisplay[i][0].mods = 'None';
+        }
+
+        if (listOfPlayerDataToDisplay[i][0].platform === 1) {
+          listOfPlayerDataToDisplay[i][0].platform = 'PC';
+        } else if (listOfPlayerDataToDisplay[i][0].platform === 2) {
+          listOfPlayerDataToDisplay[i][0].platform = 'Switch';
+        } else if (listOfPlayerDataToDisplay[i][0].platform === 3) {
+          listOfPlayerDataToDisplay[i][0].platform = 'Xbox';
+        } else {
+          listOfPlayerDataToDisplay[i][0].platform = 'PS4';
+        }
       }
     }
   }
