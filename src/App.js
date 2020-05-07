@@ -64,12 +64,18 @@ const App = () => {
           {data.map((player) => (
             <tr key={player.id}>
               <td className="cell">{player.username}</td>
-              <td className="cell">{player.status_id}</td>
+              <td className="cell">
+                {player.playerStatuses.map((status) => (
+                  <p>{status}</p>
+                ))}
+              </td>
               <td className="cell">{player.timezone}</td>
               <td className="cell">{player.num_players}</td>
               <td className="cell">{player.platform}</td>
               <td className="cell">{player.mods}</td>
-              <td className="cell">{player.invite_code}</td>
+              <td className="cell">
+                <p>DM me</p>
+              </td>
               <td className="cell">{player.notes}</td>
             </tr>
           ))}

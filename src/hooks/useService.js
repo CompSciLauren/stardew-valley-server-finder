@@ -106,6 +106,7 @@ const useService = () => {
           );
         });
 
+        console.log(playerList);
         setData(playerList);
       }
     );
