@@ -12,34 +12,35 @@ export default function usePlayer(personIdentifier) {
   };
 
   useEffect(() => {
-    async function loadData(){
-    if (personIdentifier !== null) {
-      setIsLoading(true);
+    async function loadData() {
+      if (personIdentifier !== null) {
+        setIsLoading(true);
 
-      fetch(`https://localhost:8081/player/${personIdentifier}`, {
-        method: 'GET',
-      })
-        .then((response) => response.json())
-        //If response is in json then in success
-        .then((responseJson) => {
-          //Success
-
-          setIsLoading(false);
-          if (responseJson[0] != null) {
-            setPlayer(responseJson);
-          } else {
-            setPlayer(emptyJson);
-          }
-
+        // fetch(`https://localhost:8081/player/${personIdentifier}`, {
+        fetch(`/player`, {
+          method: 'GET',
         })
-        //If response is not in json then in error
-        .catch((error) => {
-          //Error
-          console.error(error);
-        });
-    }}
+          .then((response) => response.json())
+          //If response is in json then in success
+          .then((responseJson) => {
+            //Success
+
+            setIsLoading(false);
+            if (responseJson != null) {
+              setPlayer(responseJson);
+            } else {
+              setPlayer(emptyJson);
+            }
+          })
+          //If response is not in json then in error
+          .catch((error) => {
+            //Error
+            console.error(error);
+          });
+      }
+    }
     loadData();
-  }, [personIdentifier]);
+  }, []);
 
   return {
     player,

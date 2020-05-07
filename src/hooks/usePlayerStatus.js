@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 
-export default function usePlayerStatus(personIdentifier) {
+export default function usePlayerStatus() {
   const [playerStatus, setPlayerStatus] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -12,11 +12,10 @@ export default function usePlayerStatus(personIdentifier) {
   };
 
   useEffect(() => {
-    async function loadData(){
-    if (personIdentifier !== null) {
+    async function loadData() {
       setIsLoading(true);
 
-      fetch(`https://localhost:8081/playerStatus/`, {
+      fetch(`/playerStatus`, {
         method: 'GET',
       })
         .then((response) => response.json())
@@ -30,16 +29,15 @@ export default function usePlayerStatus(personIdentifier) {
           } else {
             setPlayerStatus(emptyJson);
           }
-
         })
         //If response is not in json then in error
         .catch((error) => {
           //Error
           console.error(error);
         });
-    }}
+    }
     loadData();
-  }, [personIdentifier]);
+  }, []);
 
   return {
     playerStatus,

@@ -1,63 +1,21 @@
-import React, {Component} from 'react';
-import ReactDom from 'react-dom';
+import React from 'react';
 import './App.css';
-import SampleData from './data.json';
 import TableFilter from 'react-table-filter';
-import {} from './styles.css';
-import {} from './example.scss';
+import './styles.css';
+import './example.scss';
+import useService from './hooks/useService';
 
-class App extends Component {
-  // var tf = new TableFilter(document.querySelector('.my-table'), {
-  //   base_path: 'path/to/my/scripts/tablefilter/',
-  // });
-  // tf.init();
+const App = () => {
+  const { isLoading, data, setData } = useService();
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      'data': SampleData.test.data,
-    };
-    this._filterUpdated = this._filterUpdated.bind(this);
+  if (isLoading || !data) {
+    return <h1>Loading...</h1>;
   }
 
-  _filterUpdated(newData, filtersObject) {
-    this.setState({
-      'data' : newData,
-    });
-  }
+  const _filterUpdated = (newData) => {
+    setData(newData);
+  };
 
-    render(){
-      const data = this.state.data;
-      const elementsHtml = data.map((item, index) => {
-        return (
-          <tr key={'row_'+index}>
-            <td className="cell">
-              {item.user}
-            </td>
-            <td className="cell">
-              {item.status}
-            </td>
-            <td className="cell">
-              {item.timezone}
-            </td>
-            <td className="cell">
-              {item.playersneeded}
-            </td>
-            <td className="cell">
-              {item.platform}
-            </td>
-            <td className="cell">
-              {item.mods}
-            </td>
-            <td className="cell">
-              {item.invitecode}
-            </td>
-            <td className="cell">
-              {item.other}
-            </td>
-          </tr>
-        );
-      });
   return (
     <div className="App">
       <header className="App-header">
@@ -66,44 +24,65 @@ class App extends Component {
       </header>
 
       <table>
-        <thread>
-          <TableFilter 
-            rows={data}
-            onFilterUpdate={this._filterUpdated}>
-              <th key="user" filterkey="user" className="cell" casesensitive={'true'} showsearch={'true'}>
-                User
-              </th>
-              <th key="status" filterkey="status" className="cell">
-                Status
-              </th>
-              <th key="timezone" filterkey="timezone" className="cell">
-                Timezone
-              </th>
-              <th key="playersneeded" filterkey="playersneeded" className="cell">
-                Players Needed
-              </th>
-              <th key="platform" filterkey="platform" className="cell">
-                Platform
-              </th>
-              <th key="mods" filterkey="mods" className="cell" casesensitive={'true'} showsearch={'true'}>
-                Mods
-              </th>
-              <th>
-                Invite Code
-              </th>
-              <th>
-                Other
-              </th>
+        <thead>
+          <TableFilter rows={data} onFilterUpdate={_filterUpdated}>
+            <th
+              key="user"
+              filterkey="user"
+              className="cell"
+              casesensitive={'true'}
+              showsearch={'true'}
+            >
+              User
+            </th>
+            <th key="status_id" filterkey="playerStatuses" className="cell">
+              Status
+            </th>
+            <th key="timezone" filterkey="timezone" className="cell">
+              Timezone
+            </th>
+            <th key="num_players" filterkey="num_players" className="cell">
+              Players Needed
+            </th>
+            <th key="platform" filterkey="platform" className="cell">
+              Platform
+            </th>
+            <th
+              key="mods"
+              filterkey="mods"
+              className="cell"
+              casesensitive={'true'}
+              showsearch={'true'}
+            >
+              Mods
+            </th>
+            <th key="invite_code">Invite Code</th>
+            <th key="notes">Notes</th>
           </TableFilter>
-        </thread>
+        </thead>
         <tbody>
-          { elementsHtml }
+          {data.map((player) => (
+            <tr key={player.id}>
+              <td className="cell">{player.username}</td>
+              <td className="cell">
+                {player.playerStatuses.map((status) => (
+                  <p>{status}</p>
+                ))}
+              </td>
+              <td className="cell">{player.timezone}</td>
+              <td className="cell">{player.num_players}</td>
+              <td className="cell">{player.platform}</td>
+              <td className="cell">{player.mods}</td>
+              <td className="cell">
+                <p>DM me</p>
+              </td>
+              <td className="cell">{player.notes}</td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>
   );
- }
-}
-
+};
 
 export default App;
