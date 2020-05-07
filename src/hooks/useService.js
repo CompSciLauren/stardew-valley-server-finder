@@ -34,6 +34,37 @@ function convertStatusIdToHumanReadableStatus(statusId) {
   }
 }
 
+function convertStatusIdToHumanReadableStatusForPlatform(platformId) {
+  switch (platformId) {
+    case 1: {
+      return 'PC';
+    }
+    case 2: {
+      return 'Switch';
+    }
+    case 3: {
+      return 'Xbox';
+    }
+    case 4: {
+      return 'PS4';
+    }
+    default: {
+      throw new Error('Frontend does not support this mod');
+    }
+  }
+}
+
+function convertStatusIdToHumanReadableStatusForMod(modId) {
+  switch (modId) {
+    case 1: {
+      return 'Infinite Pizzas';
+    }
+    default: {
+      return 'None';
+    }
+  }
+}
+
 /**
  * Gets the individual, human readable game statuses for the specified player
  *
@@ -67,14 +98,14 @@ const useService = () => {
             playerStatuses,
             player
           );
-          // playerEntry.platform = getPlayerPlatform(...)
-          // playerEntry.mods = getPlayerMods(...)
+          playerEntry.platform = convertStatusIdToHumanReadableStatusForPlatform(
+            player.platform
+          );
+          playerEntry.mods = convertStatusIdToHumanReadableStatusForMod(
+            player.mods
+          );
         });
 
-        // console.log(playerData);
-        // console.log(playerStatus);
-
-        console.log(playerList);
         setData(playerList);
       }
     );
