@@ -35,7 +35,7 @@ const App = () => {
             >
               User
             </th>
-            <th key="status_id" filterkey="status_id" className="cell">
+            <th key="status_id" filterkey="playerStatuses" className="cell">
               Status
             </th>
             <th key="timezone" filterkey="timezone" className="cell">
