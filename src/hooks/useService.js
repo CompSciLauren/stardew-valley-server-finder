@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
 function loadPlayerData() {
-  return fetch(`/player`, {
+  return fetch(`https://stardew-valley-server-finder.herokuapp.com/player`, {
     method: 'GET',
   })
     .then((response) => response.json())
@@ -11,9 +11,12 @@ function loadPlayerData() {
 }
 
 function loadPlayerStatus() {
-  return fetch(`/playerStatus`, {
-    method: 'GET',
-  })
+  return fetch(
+    `https://stardew-valley-server-finder.herokuapp.com/playerStatus`,
+    {
+      method: 'GET',
+    }
+  )
     .then((response) => response.json())
     .catch((error) => {
       console.error(error);
@@ -87,6 +90,7 @@ const useService = () => {
     console.log('Starting Effect');
     Promise.all([loadPlayerData(), loadPlayerStatus()]).then(
       ([playerData, playerStatuses]) => {
+        console.log(playerData, playerStatuses);
         setIsLoading(false);
 
         const playerList = [];
