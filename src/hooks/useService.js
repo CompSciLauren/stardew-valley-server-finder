@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
 function loadPlayerData() {
-  return fetch(`/player`, {
+  return fetch(`/api/player`, {
     method: 'GET',
   })
     .then((response) => response.json())
@@ -11,7 +11,7 @@ function loadPlayerData() {
 }
 
 function loadPlayerStatus() {
-  return fetch(`/playerStatus`, {
+  return fetch(`/api/playerStatus`, {
     method: 'GET',
   })
     .then((response) => response.json())
