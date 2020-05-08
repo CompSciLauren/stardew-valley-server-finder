@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
 function loadPlayerData() {
-  return fetch(`https://stardew-valley-server-finder.herokuapp.com/player`, {
+  return fetch(`/player`, {
     method: 'GET',
   })
     .then((response) => response.json())
@@ -11,12 +11,9 @@ function loadPlayerData() {
 }
 
 function loadPlayerStatus() {
-  return fetch(
-    `https://stardew-valley-server-finder.herokuapp.com/playerStatus`,
-    {
-      method: 'GET',
-    }
-  )
+  return fetch(`/playerStatus`, {
+    method: 'GET',
+  })
     .then((response) => response.json())
     .catch((error) => {
       console.error(error);
