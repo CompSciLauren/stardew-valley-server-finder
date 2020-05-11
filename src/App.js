@@ -27,6 +27,7 @@ const Navigation = () => (
     <ul>
       <li><NavLink to='/'>Home</NavLink></li>
       <li><NavLink to='/mods'>Mods</NavLink></li>
+      <li><NavLink to='/account'>Account</NavLink></li>
     </ul>
   </nav>
 );
@@ -194,9 +195,16 @@ const Mods = () => {
     </div>
   )};
 
+const Account = () => {
+  return(
+    <h>Nothing here yet</h>
+  )
+}
+
 const Main = () => (
   <Switch>
     <Route exact path='/' component={Home}></Route>
     <Route exact path='/mods' component={Mods}></Route>
+    <Route exact path='/account' component={Account}></Route>
   </Switch>
 );
