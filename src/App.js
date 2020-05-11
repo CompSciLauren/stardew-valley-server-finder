@@ -4,8 +4,27 @@ import TableFilter from 'react-table-filter';
 import './styles.css';
 import './example.scss';
 import useService from './hooks/useService';
+import {NavLink, Switch, Route} from 'react-router-dom';
 
 const App = () => {
+
+  return (
+    <div className="App">
+      <header className="App-header">
+        <img src="main_logo.png" className="App-logo" alt="logo" />
+        <p>Stardew Valley Server Finder</p>
+      </header>
+
+      <Navigation />
+      <Main />
+    </div>
+  );
+};
+
+export default App;
+
+const Home = () => {
+
   const { isLoading, data, setData } = useService();
 
   if (isLoading || !data) {
@@ -85,4 +104,39 @@ const App = () => {
   );
 };
 
-export default App;
+  const Mods = () => {
+    return(
+      <table>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Creator</th>
+        <th>Contact</th>
+        <th>Last Update</th>
+      </table>
+    )
+  }
+  const Account = () => {
+    return(
+      <h>Nothing Here Yet.</h>
+    )
+  };
+
+
+  const Navigation = () => (
+    <nav>
+      <ul>
+        <li><NavLink to='/'>Home</NavLink></li>
+        <li><NavLink to='/mods'>Mods</NavLink></li>
+        <li><NavLink to='/account'>Account</NavLink></li>
+      </ul>
+    </nav>
+  );
+
+const Main = () => (
+  <Switch>
+    <Route exact path='/' component={Home}></Route>
+    <Route exact path='/mods' component={Mods}></Route>
+    <Route exact path='/account' component={Account}></Route>
+  </Switch>
+);
+

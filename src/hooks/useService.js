@@ -20,6 +20,15 @@ function loadPlayerStatus() {
     });
 }
 
+function loadModData() {  return fetch(`/api/mod`, {
+  method: 'GET',
+})
+  .then((response) => response.json())
+  .catch((error) => {
+    console.error(error);
+  });
+}
+
 function convertStatusIdToHumanReadableStatus(statusId) {
   switch (statusId) {
     case 1: {
@@ -56,8 +65,23 @@ function convertStatusIdToHumanReadableStatusForPlatform(platformId) {
 
 function convertStatusIdToHumanReadableStatusForMod(modId) {
   switch (modId) {
+    case 0: {
+      return 'None';
+    }
     case 1: {
-      return 'Infinite Pizzas';
+      return 'Infinite Life Mod'
+    }
+    case 2: {
+      return 'One Hit Death Mod'
+    }
+    case 3: {
+      return 'Infinite Money'
+    }
+    case 4: {
+      return 'No Money Mod'
+    }
+    case 5: {
+      return 'Farm Helper'
     }
     default: {
       return 'None';
@@ -111,6 +135,8 @@ const useService = () => {
         setData(playerList);
       }
     );
+
+    
   }, []);
 
   return {
