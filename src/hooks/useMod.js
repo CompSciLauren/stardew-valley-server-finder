@@ -17,7 +17,7 @@ export default function useMods(modIdentifier) {
         setIsLoading(true);
 
         // fetch(`https://localhost:8081/player/${modIdentifier}`, {
-        fetch(`/mods`, {
+        fetch(`/mod`, {
           method: 'GET',
         })
           .then((response) => response.json())
