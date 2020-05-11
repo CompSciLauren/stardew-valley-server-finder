@@ -136,7 +136,7 @@ const Mods = () => {
           <td>Everything kills in one hit. For the hardcore.</td>
           <td>The Deathbringer</td>
           <td>death.bringer@email.nah</td>
-          <td>2020-04-017</td>
+          <td>2020-04-17</td>
         </tr>
       </table>
       <h><b>Servers go here</b></h>
