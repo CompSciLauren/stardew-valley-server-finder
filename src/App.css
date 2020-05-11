@@ -20,6 +20,10 @@
   text-shadow: black;
 }
 
+h {
+  padding: 20px;
+}
+
 .App-link {
   color: #61dafb;
 }
@@ -48,4 +52,21 @@ th {
 
 tr:nth-child(even) {
   background-color: #dddddd;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  background-color: brown;
+  margin-bottom: 20px;
+}
+
+nav ul li {
+  padding: 10px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  text-align: center;
 }

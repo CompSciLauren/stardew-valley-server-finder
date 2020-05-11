@@ -1,9 +1,9 @@
-/*usePlayer.js*/
+/*useMods.js*/
 
 import { useState, useEffect } from 'react';
 
-export default function usePlayer(personIdentifier) {
-  const [player, setPlayer] = useState([]);
+export default function useMods(modIdentifier) {
+  const [mod, setMod] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   const emptyJson = {
@@ -13,11 +13,11 @@ export default function usePlayer(personIdentifier) {
 
   useEffect(() => {
     async function loadData() {
-      if (personIdentifier !== null) {
+      if (modIdentifier !== null) {
         setIsLoading(true);
 
-        // fetch(`https://localhost:8081/player/${personIdentifier}`, {
-        fetch(`/player`, {
+        // fetch(`https://localhost:8081/player/${modIdentifier}`, {
+        fetch(`/mod`, {
           method: 'GET',
         })
           .then((response) => response.json())
@@ -27,9 +27,9 @@ export default function usePlayer(personIdentifier) {
 
             setIsLoading(false);
             if (responseJson != null) {
-              setPlayer(responseJson);
+              setMod(responseJson);
             } else {
-              setPlayer(emptyJson);
+              setMod(emptyJson);
             }
           })
           //If response is not in json then in error
@@ -43,7 +43,7 @@ export default function usePlayer(personIdentifier) {
   }, []);
 
   return {
-    player,
+    mod,
     isLoading,
   };
 }
