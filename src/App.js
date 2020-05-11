@@ -184,17 +184,6 @@ const Mods = () => {
       <h><b>Servers go here</b></h>
     </div>
   )};
-  const Mods = () => {
-    return(
-      <table>
-        <th>Name</th>
-        <th>Description</th>
-        <th>Creator</th>
-        <th>Contact</th>
-        <th>Last Update</th>
-      </table>
-    )
-  }
   const Account = () => {
     return(
       <h>Nothing Here Yet.</h>
