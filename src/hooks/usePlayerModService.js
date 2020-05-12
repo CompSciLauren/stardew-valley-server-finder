@@ -24,7 +24,10 @@ function loadPlayersWithModData(id) {
           setIsLoading(false);
   
           const modList = [];
-
+          modData.forEach((game_mod, index) => {
+            modList[index] = game_mod;
+          });
+  
           console.log(modList);
           setData(modList);
         }
