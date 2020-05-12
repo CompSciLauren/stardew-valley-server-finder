@@ -15,7 +15,7 @@ function loadPlayersWithModData() {
     const [isLoading, setIsLoading] = useState(false);
     const [data, setData] = useState(null);
   
-    useEffect((id) => {
+    useEffect(() => {
       setIsLoading(true);
       console.log('Starting Effect');
       Promise.all([loadPlayersWithModData()]).then(
@@ -23,7 +23,13 @@ function loadPlayersWithModData() {
           console.log(playerData);
           setIsLoading(false);
   
-          const modList = playerData.slice();
+          const modList = [];
+          //copies the playerData to the new list
+          playerData.forEach((player) => {
+              modList.push(player);
+          });
+
+
           console.log(modList);
           setData(modList);
         }

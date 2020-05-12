@@ -99,11 +99,11 @@ const Mods = () => {
   const { isLoading, data } = useModService();
   const { isLoading1, mod1Data } = usePlayerModService();
 
-  if (isLoading || !data || isLoading1 || !mod1Data) {
+  if (isLoading || !data || isLoading1){// || !mod1Data) {
     return <h1>Loading...</h1>;
   }
 
-  return(
+  return( 
     <div>
       <h1>Top 5 Popular Mods</h1>
       <table>
