@@ -11,8 +11,8 @@ function loadModData() {
   }
 
 /*
-function loadPlayersWithModData() {
-  return fetch(`api/game_mod`, {
+function loadPlayersWithModData(put modid here?) {
+  return fetch(`api/game_mod` but this also uses player, do we include it?, {
     method: 'GETPLAYER',
   })
   .then((response) => response.json())
@@ -54,5 +54,34 @@ function loadPlayersWithModData() {
     };
   };
 
+  /*
+  const usePlayerModService = () => {
+    const [isLoading, setIsLoading] = useState(false);
+    const [data, setData] = useState(null);
+  
+    useEffect(() => {
+      setIsLoading(true);
+      console.log('Starting Effect');
+      Promise.all([loadPlayersWithModData()]).then(
+        ([modData]) => {
+          console.log(modData);
+          setIsLoading(false);
+  
+          const modList = [];
+
+          console.log(modList);
+          setData(modList);
+        }
+      );
+  
+      
+    }, []);
+  
+    return {
+      isLoading,
+      data,
+    };
+  };
+*/
   export default useModService;
   
