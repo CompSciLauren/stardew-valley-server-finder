@@ -19,16 +19,6 @@ function loadPlayerStatus() {
       console.error(error);
     });
 }
-
-function loadModData() {  return fetch(`/api/game_mod`, {
-  method: 'GET',
-})
-  .then((response) => response.json())
-  .catch((error) => {
-    console.error(error);
-  });
-}
-
 function convertStatusIdToHumanReadableStatus(statusId) {
   switch (statusId) {
     case 1: {
@@ -147,5 +137,6 @@ const useService = () => {
     setData,
   };
 };
+
 
 export default useService;

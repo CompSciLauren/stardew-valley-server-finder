@@ -4,6 +4,7 @@ import TableFilter from 'react-table-filter';
 import './styles.css';
 import './example.scss';
 import useService from './hooks/useService';
+import useModService from './hooks/useModService'
 import {NavLink, Switch, Route} from 'react-router-dom';
 
 const App = () => {
@@ -94,6 +95,12 @@ const Home = () => {
   )};
 
 const Mods = () => {
+  const { isLoading, data, setData } = useModService();
+
+  if (isLoading || !data) {
+    return <h1>Loading...</h1>;
+  }
+
   return(
     <div>
       <h1>Top 5 Popular Mods</h1>
@@ -106,11 +113,11 @@ const Mods = () => {
           <th>Last Updated</th>
         </tr>
         <tr>
-          <td>Infinite Life Mod</td>
-          <td>Gives you infinite life</td>
-          <td>The Lifegiver</td>
-          <td>life.giver@email.nah</td>
-          <td>2020-05-09</td>
+          <td>{data[0].name}</td>
+          <td>{data[0].desc}</td>
+          <td>{data[0].creator}</td>
+          <td>{data[0].contact}</td>
+          <td>{data[0].lastupdate}</td>
         </tr>
       </table>
       <h><b>Servers go here</b></h>
@@ -123,11 +130,11 @@ const Mods = () => {
           <th>Last Updated</th>
         </tr>
         <tr>
-          <td>One Hit Death Mod</td>
-          <td>Everything kills in one hit. For the hardcore.</td>
-          <td>The Deathbringer</td>
-          <td>death.bringer@email.nah</td>
-          <td>2020-04-17</td>
+          <td>{data[1].name}</td>
+          <td>{data[1].desc}</td>
+          <td>{data[1].creator}</td>
+          <td>{data[1].contact}</td>
+          <td>{data[1].lastupdate}</td>
         </tr>
       </table>
       <h><b>Servers go here</b></h>
@@ -140,11 +147,11 @@ const Mods = () => {
           <th>Last Updated</th>
         </tr>
         <tr>
-          <td>Infinite Money</td>
-          <td>Gives you infinite money</td>
-          <td>The Moneylender</td>
-          <td>money.lender@email.nah</td>
-          <td>2020-02-14</td>
+          <td>{data[2].name}</td>
+          <td>{data[2].desc}</td>
+          <td>{data[2].creator}</td>
+          <td>{data[2].contact}</td>
+          <td>{data[2].lastupdate}</td>
         </tr>
       </table>
       <h><b>Servers go here</b></h>
@@ -157,11 +164,11 @@ const Mods = () => {
           <th>Last Updated</th>
         </tr>
         <tr>
-          <td>No Money Mod</td>
-          <td>You cannot earn money, everything you have to earn yourself.</td>
-          <td>The Money Taker</td>
-          <td>Money.Taker@email.nah</td>
-          <td>2020-04-17</td>
+          <td>{data[3].name}</td>
+          <td>{data[3].desc}</td>
+          <td>{data[3].creator}</td>
+          <td>{data[3].contact}</td>
+          <td>{data[3].lastupdate}</td>
         </tr>
       </table>
       <h><b>Servers go here</b></h>
@@ -174,16 +181,17 @@ const Mods = () => {
           <th>Last Updated</th>
         </tr>
         <tr>
-          <td>Farm Helper Mod</td>
-          <td>Installs a pop-up helper to help you manage your farm!</td>
-          <td>The Farm Helper</td>
-          <td>Farm.Helper@email.nah</td>
-          <td>2020-04-17</td>
+          <td>{data[4].name}</td>
+          <td>{data[4].desc}</td>
+          <td>{data[4].creator}</td>
+          <td>{data[4].contact}</td>
+          <td>{data[4].lastupdate}</td>
         </tr>
       </table>
       <h><b>Servers go here</b></h>
     </div>
   )};
+  
   const Account = () => {
     return(
       <h>Nothing Here Yet.</h>
