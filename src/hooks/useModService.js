@@ -11,7 +11,7 @@ function loadModData() {
   }
 
 /*
-function loadPlayersWithModData(put modid here?) {
+function loadPlayersWithModData(put modId here?) {
   return fetch(`api/game_mod` but this also uses player, do we include it?, {
     method: 'GETPLAYER',
   })
