@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 
 export default function useMods(modIdentifier) {
-  const [mod, setMod] = useState([]);
+  const [game_mod, setgame_Mod] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   const emptyJson = {
@@ -17,7 +17,7 @@ export default function useMods(modIdentifier) {
         setIsLoading(true);
 
         // fetch(`https://localhost:8081/player/${modIdentifier}`, {
-        fetch(`/mod`, {
+        fetch(`/game_mod`, {
           method: 'GET',
         })
           .then((response) => response.json())
@@ -27,9 +27,9 @@ export default function useMods(modIdentifier) {
 
             setIsLoading(false);
             if (responseJson != null) {
-              setMod(responseJson);
+              setgame_Mod(responseJson);
             } else {
-              setMod(emptyJson);
+              setgame_Mod(emptyJson);
             }
           })
           //If response is not in json then in error
@@ -43,7 +43,7 @@ export default function useMods(modIdentifier) {
   }, []);
 
   return {
-    mod,
+    game_mod,
     isLoading,
   };
 }
