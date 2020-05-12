@@ -20,7 +20,7 @@ function loadPlayerStatus() {
     });
 }
 
-function loadModData() {  return fetch(`/api/mod`, {
+function loadModData() {  return fetch(`/api/game_mod`, {
   method: 'GET',
 })
   .then((response) => response.json())
