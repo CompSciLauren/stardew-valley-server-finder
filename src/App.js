@@ -120,7 +120,7 @@ const Mods = () => {
           <td>{data[0].lastupdate}</td>
         </tr>
       </table>
-      <h><b>Servers go here</b></h>
+      <h><b>Servers Running this Mod</b></h>
       <table>
         <tr>
           <th>Mod Name</th>
@@ -137,7 +137,7 @@ const Mods = () => {
           <td>{data[1].lastupdate}</td>
         </tr>
       </table>
-      <h><b>Servers go here</b></h>
+      <h><b>Servers Running this Mod</b></h>
       <table>
         <tr>
           <th>Mod Name</th>
@@ -154,7 +154,7 @@ const Mods = () => {
           <td>{data[2].lastupdate}</td>
         </tr>
       </table>
-      <h><b>Servers go here</b></h>
+      <h><b>Servers Running this Mod</b></h>
       <table>
         <tr>
           <th>Mod Name</th>
@@ -171,7 +171,7 @@ const Mods = () => {
           <td>{data[3].lastupdate}</td>
         </tr>
       </table>
-      <h><b>Servers go here</b></h>
+      <h><b>Servers Running this Mod</b></h>
       <table>
         <tr>
           <th>Mod Name</th>
@@ -188,13 +188,26 @@ const Mods = () => {
           <td>{data[4].lastupdate}</td>
         </tr>
       </table>
-      <h><b>Servers go here</b></h>
+      <h><b>Servers Running this Mod</b></h>
     </div>
   )};
-  
+
   const Account = () => {
     return(
-      <h>Nothing Here Yet.</h>
+      <div>
+      <h>Please Enter Your Username and Password</h>
+      <form>
+      <label>
+        Username:
+        <input type="text"/>
+      </label>
+      <label>
+        Password:
+        <input type="text"/>
+      </label>
+      <input type="submit" value="Submit" />
+    </form>
+    </div>
     )
   };
 
