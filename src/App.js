@@ -95,7 +95,7 @@ const Home = () => {
   )};
 
 const Mods = () => {
-  const { isLoading, data, setData } = useModService();
+  const { isLoading, data} = useModService();
 
   if (isLoading || !data) {
     return <h1>Loading...</h1>;
