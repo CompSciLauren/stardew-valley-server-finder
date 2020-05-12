@@ -4,7 +4,8 @@ import TableFilter from 'react-table-filter';
 import './styles.css';
 import './example.scss';
 import useService from './hooks/useService';
-import useModService from './hooks/useModService'
+import useModService from './hooks/useModService';
+import usePlayerModService from './hooks/usePlayerModService';
 import {NavLink, Switch, Route} from 'react-router-dom';
 
 const App = () => {
@@ -95,9 +96,10 @@ const Home = () => {
   )};
 
 const Mods = () => {
-  const { isLoading, data} = useModService();
+  const { isLoading, data } = useModService();
+ // const{ isLoading1, mod1Data } = usePlayerModService(1);
 
-  if (isLoading || !data) {
+  if (isLoading || !data){ //|| isLoading1 || !mod1Data) {
     return <h1>Loading...</h1>;
   }
 
