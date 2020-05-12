@@ -10,18 +10,6 @@ function loadModData() {
     });
   }
 
-/*
-function loadPlayersWithModData(put modId here?) {
-  return fetch(`api/game_mod` but this also uses player, do we include it?, {
-    method: 'GETPLAYER',
-  })
-  .then((response) => response.json())
-  .catch((error) => {
-    console.error(error);
-  });
-}
-*/
-
   const useModService = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [data, setData] = useState(null);
