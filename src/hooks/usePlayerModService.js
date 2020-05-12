@@ -15,7 +15,7 @@ function loadPlayersWithModData(id) {
     const [isLoading, setIsLoading] = useState(false);
     const [data, setData] = useState(null);
   
-    useEffect(() => {
+    useEffect((id) => {
       setIsLoading(true);
       console.log('Starting Effect');
       Promise.all([loadPlayersWithModData(id)]).then(
