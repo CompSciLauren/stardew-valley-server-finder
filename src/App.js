@@ -97,9 +97,9 @@ const Home = () => {
 
 const Mods = () => {
   const { isLoading, data } = useModService();
- // const{ isLoading1, mod1Data } = usePlayerModService(1);
+  const { isLoading1, mod1Data } = usePlayerModService();
 
-  if (isLoading || !data){ //|| isLoading1 || !mod1Data) {
+  if (isLoading || !data || isLoading1 || !mod1Data) {
     return <h1>Loading...</h1>;
   }
 
