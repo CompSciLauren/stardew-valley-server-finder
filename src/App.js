@@ -199,11 +199,11 @@ const Mods = () => {
       <form>
       <label>
         Username:
-        <input type="text"/>
+        <input type="text" id="username" name="username"/>
       </label>
       <label>
         Password:
-        <input type="text"/>
+        <input type="text" id="password" name="password"/>
       </label>
       <input type="submit" value="Submit" />
     </form>
