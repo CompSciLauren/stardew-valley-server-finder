@@ -10,6 +10,7 @@ function loadModData() {
     });
   }
 
+/*
 function loadPlayersWithModData() {
   return fetch(`api/game_mod`, {
     method: 'GETPLAYER',
@@ -19,6 +20,7 @@ function loadPlayersWithModData() {
     console.error(error);
   });
 }
+*/
 
   const useModService = () => {
     const [isLoading, setIsLoading] = useState(false);
