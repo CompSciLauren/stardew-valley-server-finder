@@ -97,12 +97,14 @@ const Home = () => {
 
 const Mods = () => {
   const { isLoading, data } = useModService();
-  const { isLoading1, modPlayerData } = usePlayerModService();
+  const { isLoading1, modPlayerData, setData } = usePlayerModService();
 
   if (isLoading || !data || isLoading1 || !modPlayerData) {
     return <h1>Loading...</h1>;
   }
-
+  const _filterUpdated = (newData) => {
+    setData(newData);
+  };
   //console.log(data);
   console.log(modPlayerData);
   const mod1Data = modPlayerData[0];
@@ -116,7 +118,9 @@ const Mods = () => {
   console.log(mod4Data);
   console.log(mod5Data);
 
-
+  if (isLoading || !data || isLoading1 || !modPlayerData || !mod1Data || !mod2Data) {
+    return <h1>Loading...</h1>;
+  }
   return( 
     <div>
       <h1>Top 5 Popular Mods</h1>
@@ -138,14 +142,43 @@ const Mods = () => {
       </table>
       <h><b>Servers Running this Mod</b></h>
       <table>
-        <tr>
-          <td>{mod1Data[0].username}</td>
-          <td>{mod1Data[0].timezone}</td>
-          <td>{mod1Data[0].num_players}</td>
-          <td>{mod1Data[0].platform}</td>
-          <td>{mod1Data[0].mods}</td>
-        </tr>
-      </table>
+          <thead>
+             <TableFilter rows={mod1Data} onFilterUpdate={_filterUpdated}>
+                <th
+                  key="username"
+                  filterkey="username"
+                  className="cell"
+                  casesensitive={'true'}
+                  showsearch={'true'}
+                >
+                  User
+                </th>
+                <th key="timezone" filterkey="timezone" className="cell">
+                  Timezone
+                </th>
+                <th key="num_players" filterkey="num_players" className="cell">
+                  # of Players
+                </th>
+                <th key="platform" filterkey="Platform" className="cell">
+                  Platform
+                </th>
+                <th key="mods" filterkey="Mods" className="cell">
+                  Mods
+                </th>
+              </TableFilter>
+          </thead>
+          <tbody>
+            {mod1Data.map((m) => (
+              <tr >
+                <td className="cell">{m.username}</td>
+                <td className="cell">{m.timezone}</td>
+                <td className="cell">{m.num_players}</td>
+                <td className="cell">{m.platform}</td>
+                <td className="cell">{m.mods}</td>
+              </tr>
+              ))}
+         </tbody>
+        </table>
       <table>
         <tr>
           <th>Mod Name</th>
@@ -163,6 +196,44 @@ const Mods = () => {
         </tr>
       </table>
       <h><b>Servers Running this Mod</b></h>
+        <table>
+          <thead>
+             <TableFilter rows={mod2Data} onFilterUpdate={_filterUpdated}>
+                <th
+                  key="username"
+                  filterkey="username"
+                  className="cell"
+                  casesensitive={'true'}
+                  showsearch={'true'}
+                >
+                  User
+                </th>
+                <th key="timezone" filterkey="timezone" className="cell">
+                  Timezone
+                </th>
+                <th key="num_players" filterkey="num_players" className="cell">
+                  # of Players
+                </th>
+                <th key="platform" filterkey="Platform" className="cell">
+                  Platform
+                </th>
+                <th key="mods" filterkey="Mods" className="cell">
+                  Mods
+                </th>
+              </TableFilter>
+          </thead>
+          <tbody>
+            {mod2Data.map((m) => (
+              <tr >
+                <td className="cell">{m.username}</td>
+                <td className="cell">{m.timezone}</td>
+                <td className="cell">{m.num_players}</td>
+                <td className="cell">{m.platform}</td>
+                <td className="cell">{m.mods}</td>
+              </tr>
+              ))}
+         </tbody>
+        </table>
       <table>
         <tr>
           <th>Mod Name</th>
@@ -180,6 +251,46 @@ const Mods = () => {
         </tr>
       </table>
       <h><b>Servers Running this Mod</b></h>
+
+      <table>
+          <thead>
+             <TableFilter rows={mod3Data} onFilterUpdate={_filterUpdated}>
+                <th
+                  key="username"
+                  filterkey="username"
+                  className="cell"
+                  casesensitive={'true'}
+                  showsearch={'true'}
+                >
+                  User
+                </th>
+                <th key="timezone" filterkey="timezone" className="cell">
+                  Timezone
+                </th>
+                <th key="num_players" filterkey="num_players" className="cell">
+                  # of Players
+                </th>
+                <th key="platform" filterkey="Platform" className="cell">
+                  Platform
+                </th>
+                <th key="mods" filterkey="Mods" className="cell">
+                  Mods
+                </th>
+              </TableFilter>
+          </thead>
+          <tbody>
+            {mod3Data.map((m) => (
+              <tr >
+                <td className="cell">{m.username}</td>
+                <td className="cell">{m.timezone}</td>
+                <td className="cell">{m.num_players}</td>
+                <td className="cell">{m.platform}</td>
+                <td className="cell">{m.mods}</td>
+              </tr>
+              ))}
+         </tbody>
+        </table>
+
       <table>
         <tr>
           <th>Mod Name</th>
@@ -198,6 +309,44 @@ const Mods = () => {
       </table>
       <h><b>Servers Running this Mod</b></h>
       <table>
+          <thead>
+             <TableFilter rows={mod4Data} onFilterUpdate={_filterUpdated}>
+                <th
+                  key="username"
+                  filterkey="username"
+                  className="cell"
+                  casesensitive={'true'}
+                  showsearch={'true'}
+                >
+                  User
+                </th>
+                <th key="timezone" filterkey="timezone" className="cell">
+                  Timezone
+                </th>
+                <th key="num_players" filterkey="num_players" className="cell">
+                  # of Players
+                </th>
+                <th key="platform" filterkey="Platform" className="cell">
+                  Platform
+                </th>
+                <th key="mods" filterkey="Mods" className="cell">
+                  Mods
+                </th>
+              </TableFilter>
+          </thead>
+          <tbody>
+            {mod4Data.map((m) => (
+              <tr >
+                <td className="cell">{m.username}</td>
+                <td className="cell">{m.timezone}</td>
+                <td className="cell">{m.num_players}</td>
+                <td className="cell">{m.platform}</td>
+                <td className="cell">{m.mods}</td>
+              </tr>
+              ))}
+         </tbody>
+        </table>
+      <table>
         <tr>
           <th>Mod Name</th>
           <th>Mod Description</th>
@@ -214,6 +363,44 @@ const Mods = () => {
         </tr>
       </table>
       <h><b>Servers Running this Mod</b></h>
+      <table>
+          <thead>
+             <TableFilter rows={mod5Data} onFilterUpdate={_filterUpdated}>
+                <th
+                  key="username"
+                  filterkey="username"
+                  className="cell"
+                  casesensitive={'true'}
+                  showsearch={'true'}
+                >
+                  User
+                </th>
+                <th key="timezone" filterkey="timezone" className="cell">
+                  Timezone
+                </th>
+                <th key="num_players" filterkey="num_players" className="cell">
+                  # of Players
+                </th>
+                <th key="platform" filterkey="Platform" className="cell">
+                  Platform
+                </th>
+                <th key="mods" filterkey="Mods" className="cell">
+                  Mods
+                </th>
+              </TableFilter>
+          </thead>
+          <tbody>
+            {mod5Data.map((m) => (
+              <tr >
+                <td className="cell">{m.username}</td>
+                <td className="cell">{m.timezone}</td>
+                <td className="cell">{m.num_players}</td>
+                <td className="cell">{m.platform}</td>
+                <td className="cell">{m.mods}</td>
+              </tr>
+              ))}
+         </tbody>
+        </table>
     </div>
   )};
 

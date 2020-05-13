@@ -98,52 +98,6 @@ function convertStatusIdToHumanReadableStatusForMod(modId) {
   }
 }
 
-function convertStatusIdToHumanReadableStatusForPlatform(platformId) {
-  switch (platformId) {
-    case 1: {
-      return 'PC';
-    }
-    case 2: {
-      return 'Switch';
-    }
-    case 3: {
-      return 'Xbox';
-    }
-    case 4: {
-      return 'PS4';
-    }
-    default: {
-      throw new Error('Frontend does not support this mod');
-    }
-  }
-}
-
-function convertStatusIdToHumanReadableStatusForMod(modId) {
-  switch (modId) {
-    case 0: {
-      return 'None';
-    }
-    case 1: {
-      return 'Infinite Life Mod'
-    }
-    case 2: {
-      return 'One Hit Death Mod'
-    }
-    case 3: {
-      return 'Infinite Money'
-    }
-    case 4: {
-      return 'No Money Mod'
-    }
-    case 5: {
-      return 'Farm Helper'
-    }
-    default: {
-      return 'None';
-    }
-  }
-}
-
   const usePlayerModService = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [modPlayerData, setData] = useState(null);
@@ -250,6 +204,7 @@ function convertStatusIdToHumanReadableStatusForMod(modId) {
     return {
       isLoading,
       modPlayerData,
+      setData,
     };
   }; 
   export default usePlayerModService;
