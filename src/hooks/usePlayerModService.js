@@ -13,7 +13,7 @@ function loadPlayersWithModData() {
 
   const usePlayerModService = () => {
     const [isLoading, setIsLoading] = useState(false);
-    const [data, setData] = useState(null);
+    const [mod1Data, setData] = useState(null);
   
     useEffect(() => {
       setIsLoading(true);
@@ -40,7 +40,7 @@ function loadPlayersWithModData() {
   
     return {
       isLoading,
-      data,
+      mod1Data,
     };
   }; 
   export default usePlayerModService;
