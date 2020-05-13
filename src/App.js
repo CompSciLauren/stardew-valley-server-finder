@@ -97,14 +97,26 @@ const Home = () => {
 
 const Mods = () => {
   const { isLoading, data } = useModService();
-  const { isLoading1, mod1Data } = usePlayerModService();
+  const { isLoading1, modPlayerData } = usePlayerModService();
 
-  if (isLoading || !data || isLoading1 || !mod1Data) {
+  if (isLoading || !data || isLoading1 || !modPlayerData) {
     return <h1>Loading...</h1>;
   }
 
-  console.log(data);
+  //console.log(data);
+  console.log(modPlayerData);
+  const mod1Data = modPlayerData[0];
+  const mod2Data = modPlayerData[1];
+  const mod3Data = modPlayerData[2];
+  const mod4Data = modPlayerData[3];
+  const mod5Data = modPlayerData[4];
   console.log(mod1Data);
+  console.log(mod2Data);
+  console.log(mod3Data);
+  console.log(mod4Data);
+  console.log(mod5Data);
+
+
   return( 
     <div>
       <h1>Top 5 Popular Mods</h1>
@@ -126,7 +138,7 @@ const Mods = () => {
       </table>
       <h><b>Servers Running this Mod</b></h>
       <table>
-      <tr>
+        <tr>
           <td>{mod1Data[0].username}</td>
           <td>{mod1Data[0].timezone}</td>
           <td>{mod1Data[0].num_players}</td>

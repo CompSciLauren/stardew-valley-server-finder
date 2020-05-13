@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-function loadPlayersWithModData() {
+function loadPlayersWithModData1() {
     return fetch(`api/mod_players/1`, {
       method: 'GET',
     })
@@ -9,7 +9,48 @@ function loadPlayersWithModData() {
       console.error(error);
     });
   }
-  
+
+
+function loadPlayersWithModData2() {
+  return fetch(`api/mod_players/2`, {
+    method: 'GET',
+  })
+  .then((response) => response.json())
+  .catch((error) => {
+    console.error(error);
+  });
+}
+
+function loadPlayersWithModData3() {
+  return fetch(`api/mod_players/3`, {
+    method: 'GET',
+  })
+  .then((response) => response.json())
+  .catch((error) => {
+    console.error(error);
+  });
+}
+
+function loadPlayersWithModData4() {
+  return fetch(`api/mod_players/4`, {
+    method: 'GET',
+  })
+  .then((response) => response.json())
+  .catch((error) => {
+    console.error(error);
+  });
+}
+
+function loadPlayersWithModData5() {
+  return fetch(`api/mod_players/5`, {
+    method: 'GET',
+  })
+  .then((response) => response.json())
+  .catch((error) => {
+    console.error(error);
+  });
+}
+
 
 function convertStatusIdToHumanReadableStatusForPlatform(platformId) {
   switch (platformId) {
@@ -59,37 +100,110 @@ function convertStatusIdToHumanReadableStatusForMod(modId) {
 
   const usePlayerModService = () => {
     const [isLoading, setIsLoading] = useState(false);
-    const [mod1Data, setData] = useState(null);
+    const [modPlayerData, setData] = useState(null);
   
     useEffect(() => {
       setIsLoading(true);
-      console.log('Starting Effect');
-      Promise.all([loadPlayersWithModData()]).then(
+      console.log('Starting Effect');          
+      const modList1 = [];
+      Promise.all([loadPlayersWithModData1()]).then(
         ([playerData]) => {
-          console.log(playerData);
+          //console.log(playerData);
           setIsLoading(false);
   
-          const modList = [];
+
           //copies the playerData to the new list
           playerData.forEach((player) => {
               player.platform = convertStatusIdToHumanReadableStatusForPlatform(player.platform);
               player.mods = convertStatusIdToHumanReadableStatusForMod(player.mods);
-              modList.push(player);
+              modList1.push(player);
+          });
+
+        }
+      );
+  
+      const modList2 = [];
+      Promise.all([loadPlayersWithModData2()]).then(
+        ([playerData]) => {
+          //console.log(playerData);
+          setIsLoading(false);
+
+          //copies the playerData to the new list
+          playerData.forEach((player) => {
+              player.platform = convertStatusIdToHumanReadableStatusForPlatform(player.platform);
+              player.mods = convertStatusIdToHumanReadableStatusForMod(player.mods);
+              modList2.push(player);
 
           });
 
 
-          console.log(modList);
-          setData(modList);
+        }
+      );
+      const modList3 = [];
+      Promise.all([loadPlayersWithModData3()]).then(
+        ([playerData]) => {
+          //console.log(playerData);
+          setIsLoading(false);
+  
+
+          //copies the playerData to the new list
+          playerData.forEach((player) => {
+              player.platform = convertStatusIdToHumanReadableStatusForPlatform(player.platform);
+              player.mods = convertStatusIdToHumanReadableStatusForMod(player.mods);
+              modList3.push(player);
+
+          });
+
         }
       );
   
+      const modList4 = [];
+      Promise.all([loadPlayersWithModData4()]).then(
+        ([playerData]) => {
+          //console.log(playerData);
+          setIsLoading(false);
 
+          //copies the playerData to the new list
+          playerData.forEach((player) => {
+              player.platform = convertStatusIdToHumanReadableStatusForPlatform(player.platform);
+              player.mods = convertStatusIdToHumanReadableStatusForMod(player.mods);
+              modList4.push(player);
+
+          });
+
+
+        }
+      );
+  
+      const modList5 = [];
+      Promise.all([loadPlayersWithModData5()]).then(
+        ([playerData]) => {
+          //console.log(playerData);
+          setIsLoading(false);
+
+          //copies the playerData to the new list
+          playerData.forEach((player) => {
+              player.platform = convertStatusIdToHumanReadableStatusForPlatform(player.platform);
+              player.mods = convertStatusIdToHumanReadableStatusForMod(player.mods);
+              modList5.push(player);
+
+          });
+
+
+        }
+      );
+        const fullList = [];
+        fullList.push(modList1);
+        fullList.push(modList2);
+        fullList.push(modList3);
+        fullList.push(modList4);
+        fullList.push(modList5);
+        setData(fullList);
     }, []);
   
     return {
       isLoading,
-      mod1Data,
+      modPlayerData,
     };
   }; 
   export default usePlayerModService;
