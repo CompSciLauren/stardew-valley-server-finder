@@ -99,10 +99,12 @@ const Mods = () => {
   const { isLoading, data } = useModService();
   const { isLoading1, mod1Data } = usePlayerModService();
 
-  if (isLoading || !data || isLoading1){// || !mod1Data) {
+  if (isLoading || !data || isLoading1){//} || !mod1Data) {
     return <h1>Loading...</h1>;
   }
 
+  console.log(data);
+  console.log(mod1Data);
   return( 
     <div>
       <h1>Top 5 Popular Mods</h1>
@@ -123,6 +125,8 @@ const Mods = () => {
         </tr>
       </table>
       <h><b>Servers Running this Mod</b></h>
+      <table>
+      </table>
       <table>
         <tr>
           <th>Mod Name</th>

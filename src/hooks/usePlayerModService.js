@@ -32,10 +32,11 @@ function loadPlayersWithModData() {
 
           console.log(modList);
           setData(modList);
+          console.log(data);
         }
       );
   
-      
+
     }, []);
   
     return {
