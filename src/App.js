@@ -99,7 +99,11 @@ const Mods = () => {
   const { isLoading, data } = useModService();
   const { isLoading1, modPlayerData } = usePlayerModService();
 
+<<<<<<< HEAD
   if (isLoading || !data || isLoading1 || !modPlayerData) {
+=======
+  if (isLoading || !data || isLoading1 || !mod1Data) {
+>>>>>>> 1e42ee8a5cd23ab9a78d9d8c4d0edc684534fc99
     return <h1>Loading...</h1>;
   }
 
@@ -138,7 +142,11 @@ const Mods = () => {
       </table>
       <h><b>Servers Running this Mod</b></h>
       <table>
+<<<<<<< HEAD
         <tr>
+=======
+      <tr>
+>>>>>>> 1e42ee8a5cd23ab9a78d9d8c4d0edc684534fc99
           <td>{mod1Data[0].username}</td>
           <td>{mod1Data[0].timezone}</td>
           <td>{mod1Data[0].num_players}</td>
