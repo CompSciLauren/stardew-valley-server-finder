@@ -4,7 +4,8 @@ import TableFilter from 'react-table-filter';
 import './styles.css';
 import './example.scss';
 import useService from './hooks/useService';
-import useModService from './hooks/useModService'
+import useModService from './hooks/useModService';
+import usePlayerModService from './hooks/usePlayerModService';
 import {NavLink, Switch, Route} from 'react-router-dom';
 
 const App = () => {
@@ -95,13 +96,16 @@ const Home = () => {
   )};
 
 const Mods = () => {
-  const { isLoading, data} = useModService();
+  const { isLoading, data } = useModService();
+  const { isLoading1, mod1Data } = usePlayerModService();
 
-  if (isLoading || !data) {
+  if (isLoading || !data || isLoading1){//} || !mod1Data) {
     return <h1>Loading...</h1>;
   }
 
-  return(
+  console.log(data);
+  console.log(mod1Data);
+  return( 
     <div>
       <h1>Top 5 Popular Mods</h1>
       <table>
@@ -121,6 +125,8 @@ const Mods = () => {
         </tr>
       </table>
       <h><b>Servers Running this Mod</b></h>
+      <table>
+      </table>
       <table>
         <tr>
           <th>Mod Name</th>
@@ -199,11 +205,11 @@ const Mods = () => {
       <form>
       <label>
         Username:
-        <input type="text"/>
+        <input type="text" id="username" name="username"/>
       </label>
       <label>
         Password:
-        <input type="text"/>
+        <input type="text" id="password" name="password"/>
       </label>
       <input type="submit" value="Submit" />
     </form>

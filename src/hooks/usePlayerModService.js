@@ -1,49 +1,47 @@
 import { useState, useEffect } from 'react';
 
-function loadModData() {  
-    return fetch(`/api/game_mod`, {
-     method: 'GET',
-  })
+function loadPlayersWithModData() {
+    return fetch(`api/mod_players/1`, {
+      method: 'GET',
+    })
     .then((response) => response.json())
     .catch((error) => {
       console.error(error);
     });
   }
+  
 
-
-
-  const useModService = () => {
+  const usePlayerModService = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [data, setData] = useState(null);
   
     useEffect(() => {
       setIsLoading(true);
       console.log('Starting Effect');
-      Promise.all([loadModData()]).then(
-        ([modData]) => {
-          console.log(modData);
+      Promise.all([loadPlayersWithModData()]).then(
+        ([playerData]) => {
+          console.log(playerData);
           setIsLoading(false);
   
           const modList = [];
-  
-          modData.forEach((game_mod) => {
-            modList[game_mod.id] = game_mod;
+          //copies the playerData to the new list
+          playerData.forEach((player) => {
+              modList.push(player);
           });
-  
+
+
           console.log(modList);
           setData(modList);
         }
       );
   
-      
+
     }, []);
   
     return {
       isLoading,
       data,
     };
-  };
-  export default useModService;
-
-
- 
+  }; 
+  export default usePlayerModService;
+  
