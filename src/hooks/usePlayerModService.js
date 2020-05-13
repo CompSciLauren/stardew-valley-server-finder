@@ -146,11 +146,7 @@ function convertStatusIdToHumanReadableStatusForMod(modId) {
 
   const usePlayerModService = () => {
     const [isLoading, setIsLoading] = useState(false);
-<<<<<<< HEAD
     const [modPlayerData, setData] = useState(null);
-=======
-    const [mod1Data, setData] = useState(null);
->>>>>>> 1e42ee8a5cd23ab9a78d9d8c4d0edc684534fc99
   
     useEffect(() => {
       setIsLoading(true);
