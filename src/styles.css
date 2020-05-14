@@ -16,6 +16,8 @@ label {
 
 input {
   margin-top: 8px;
+  /* height: 30px; */
+  border-radius: 8px;
 }
 
 button {
@@ -28,6 +30,8 @@ button {
   text-align: center;
   padding-left: 20px;
   padding-right: 20px;
+  border: none;
+  box-shadow: 5px 5px 20px 2px rgba(0, 0, 0, 0.2);
 }
 
 .primaryBtn {
