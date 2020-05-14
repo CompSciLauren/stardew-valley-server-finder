@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import TableFilter from 'react-table-filter';
-import './styles.css';
+import './table-styles.css';
 import './example.scss';
 import useService from './hooks/useService';
 import useModService from './hooks/useModService';

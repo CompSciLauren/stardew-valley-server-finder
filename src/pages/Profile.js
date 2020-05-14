@@ -1,5 +1,6 @@
 import React from 'react';
 import useService from '../hooks/useService';
+import '../styles.css';
 
 const Profile = () => {
   const { isLoading, data, setData } = useService();
@@ -18,31 +19,51 @@ const Profile = () => {
   return (
     <div>
       <div>
-        <p>Your Public Information:</p>
-        <p>Username: {playerInfo[0].username}</p>
+        <h1>My Public Information</h1>
+        <label>Username</label>
+        <p>{playerInfo[0].username}</p>
+        <label>Status</label>
         <p>
-          Status:{' '}
+          {' '}
           {playerInfo[0].playerStatuses.map((status) => (
             <p key={playerInfo[0].username + ':' + status}>{status}</p>
           ))}
         </p>
-        <p>Timezone: {playerInfo[0].timezone}</p>
-        <p>Players Needed: {playerInfo[0].num_players}</p>
-        <p>Platform: {playerInfo[0].platform}</p>
-        <p>Mods: {playerInfo[0].mods}</p>
-        <p>Invite Code: DM me</p>
-        <p>Notes: {playerInfo[0].notes}</p>
+        <label>Timezone</label>
+        <p>{playerInfo[0].timezone}</p>
+        <label>Players Needed</label>
+        <p>{playerInfo[0].num_players}</p>
+        <label>Platform</label>
+        <p>{playerInfo[0].platform}</p>
+        <label>Mods</label>
+        <p>{playerInfo[0].mods}</p>
+        <label>Invite Code</label>
+        <input type="username" id="username" value="AJF72H" />
+        <label>Set to public</label>
+        <input type="checkbox" id="inviteCode" name="inviteCode"></input>
+        <label>Notes</label>
+        <input
+          type="text"
+          id="notes"
+          class="largeInputField"
+          value={playerInfo[0].notes}
+        ></input>
       </div>
-      <div>
-        <p>Your Private Information:</p>
-        <p>Invite Code:</p>
-      </div>
-      <div>
-        <p>Options:</p>
-        <p>Change Username</p>
-        <p>Change Password</p>
-        <p>Delete Account</p>
-      </div>
+
+      <h1>Options</h1>
+      <h2>Change Username</h2>
+      <label>New Username</label>
+      <input type="username" id="username" value={playerInfo[0].username} />
+      <h2>Change Password</h2>
+      <label>Old Password</label>
+      <input type="oldPassword" id="oldPassword" />
+      <label>New Password</label>
+      <input type="newPassword" id="newPassword" />
+      <label>Confirm New Password</label>
+      <input type="confirmNewPassword" id="confirmNewPassword" />
+      <button class="primaryBtn">Save Changes</button>
+      <button class="primaryBtn">Logout</button>
+      <button class="dangerBtn">Delete Account</button>
     </div>
   );
 };
