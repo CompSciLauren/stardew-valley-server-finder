@@ -80,7 +80,7 @@ const Home = () => {
             <td className="cell">{player.username}</td>
             <td className="cell">
               {player.playerStatuses.map((status) => (
-                <p>{status}</p>
+                <p key={player.username + ':' + status}>{status}</p>
               ))}
             </td>
             <td className="cell">{player.timezone}</td>
@@ -446,9 +446,9 @@ const Navigation = () => (
 
 const Main = () => (
   <Switch>
-    <Route exact path="/" component={Home}></Route>
-    <Route exact path="/mods" component={Mods}></Route>
-    <Route exact path="/login" component={Login}></Route>
-    <Route exact path="/profile" component={Profile}></Route>
+    <Route key="0" exact path="/" component={Home}></Route>
+    <Route key="1" exact path="/mods" component={Mods}></Route>
+    <Route key="2" exact path="/login" component={Login}></Route>
+    <Route key="3" exact path="/profile" component={Profile}></Route>
   </Switch>
 );
