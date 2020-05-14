@@ -149,9 +149,9 @@ const Mods = () => {
           <td>{data[0].lastupdate}</td>
         </tr>
       </table>
-      <h>
+      <p>
         <b>Servers Running this Mod</b>
-      </h>
+      </p>
       <table>
         <thead>
           <TableFilter rows={mod1Data} onFilterUpdate={_filterUpdated}>
@@ -206,9 +206,9 @@ const Mods = () => {
           <td>{data[1].lastupdate}</td>
         </tr>
       </table>
-      <h>
+      <p>
         <b>Servers Running this Mod</b>
-      </h>
+      </p>
       <table>
         <thead>
           <TableFilter rows={mod2Data} onFilterUpdate={_filterUpdated}>
@@ -263,9 +263,9 @@ const Mods = () => {
           <td>{data[2].lastupdate}</td>
         </tr>
       </table>
-      <h>
+      <p>
         <b>Servers Running this Mod</b>
-      </h>
+      </p>
 
       <table>
         <thead>
@@ -322,9 +322,9 @@ const Mods = () => {
           <td>{data[3].lastupdate}</td>
         </tr>
       </table>
-      <h>
+      <p>
         <b>Servers Running this Mod</b>
-      </h>
+      </p>
       <table>
         <thead>
           <TableFilter rows={mod4Data} onFilterUpdate={_filterUpdated}>
@@ -379,9 +379,9 @@ const Mods = () => {
           <td>{data[4].lastupdate}</td>
         </tr>
       </table>
-      <h>
+      <p>
         <b>Servers Running this Mod</b>
-      </h>
+      </p>
       <table>
         <thead>
           <TableFilter rows={mod5Data} onFilterUpdate={_filterUpdated}>
