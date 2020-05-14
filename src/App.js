@@ -6,7 +6,7 @@ import './example.scss';
 import useService from './hooks/useService';
 import useModService from './hooks/useModService';
 import usePlayerModService from './hooks/usePlayerModService';
-import { NavLink, Switch, Route, HashRouter } from 'react-router-dom';
+import { NavLink, Switch, Route } from 'react-router-dom';
 import Login from './pages/Login';
 
 const App = () => {
