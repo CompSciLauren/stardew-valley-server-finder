@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+//import Profile from './Profile';
 
-const Login = (props) => {
+const Login = () => {
   const [state, setState] = useState({
     username: '',
     password: '',
@@ -18,6 +19,7 @@ const Login = (props) => {
     e.preventDefault();
     if (state.username === 'CompSciLauren' && state.password === 'mypassword') {
       console.log('Success');
+      //navigate(Profile);
     } else {
       console.log('Failed to login');
     }
@@ -48,6 +50,7 @@ const Login = (props) => {
           />
         </label>
         <input type="submit" value="Submit" onClick={handleSubmitClick} />
+        {/* <NavLink to="/profile">Profile</NavLink> */}
       </form>
     </div>
   );

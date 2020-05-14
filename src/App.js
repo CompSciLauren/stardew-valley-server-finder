@@ -8,6 +8,7 @@ import useModService from './hooks/useModService';
 import usePlayerModService from './hooks/usePlayerModService';
 import { NavLink, Switch, Route } from 'react-router-dom';
 import Login from './pages/Login';
+import Profile from './pages/Profile';
 
 const App = () => {
   return (
@@ -436,6 +437,9 @@ const Navigation = () => (
       <li>
         <NavLink to="/login">Account</NavLink>
       </li>
+      <li>
+        <NavLink to="/profile">Profile</NavLink>
+      </li>
     </ul>
   </nav>
 );
@@ -445,5 +449,6 @@ const Main = () => (
     <Route exact path="/" component={Home}></Route>
     <Route exact path="/mods" component={Mods}></Route>
     <Route exact path="/login" component={Login}></Route>
+    <Route exact path="/profile" component={Profile}></Route>
   </Switch>
 );
