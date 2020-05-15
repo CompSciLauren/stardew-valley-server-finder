@@ -16,8 +16,13 @@ label {
 
 input {
   margin-top: 8px;
-  /* height: 30px; */
   border-radius: 8px;
+}
+
+input[type='text'] {
+  height: 30px;
+  border: 2px solid #eeeeee;
+  padding-left: 12px;
 }
 
 button {
@@ -48,12 +53,13 @@ button {
 .largeInputField {
   height: 72px;
   width: 300px;
+  border-radius: 8px;
+  border: 2px solid #eeeeee;
+  resize: none;
 }
 
 .grid-container {
   display: grid;
-  margin-left: 300px;
-  max-width: 875px;
   grid-template-columns: auto auto auto;
   /* background-color: #2196f3; */
 }
@@ -63,4 +69,18 @@ button {
   padding: 10px;
   /* font-size: 30px; */
   text-align: left;
+}
+
+.section {
+  border-top: 5px solid #3490dc;
+  margin-left: 300px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  max-width: 875px;
+  border-radius: 8px;
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
+}
+
+.section-danger {
+  border-top: 5px solid #e3342f;
 }

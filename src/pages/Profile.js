@@ -18,7 +18,7 @@ const Profile = () => {
 
   return (
     <div>
-      <div>
+      <div class="section">
         <h1>My Public Information</h1>
         <div class="grid-container">
           <div class="grid-item">
@@ -60,48 +60,62 @@ const Profile = () => {
 
           <div class="grid-item">
             <label>Invite Code</label>
-            <input type="username" id="username" value="AJF72H" />
+            <input type="text" id="username" value="AJF72H" />
             <input type="checkbox" id="inviteCode" name="inviteCode"></input>
             Public
           </div>
           <div class="grid-item">
             <label>Notes</label>
-            <input
+            <textarea
               type="text"
               id="notes"
               class="largeInputField"
               value={playerInfo[0].notes}
-            ></input>
+            ></textarea>
+          </div>
+          <div class="grid-item"></div>
+          <div class="grid-item">
+            <button class="primaryBtn">Save Changes</button>
           </div>
         </div>
       </div>
 
-      <h1>Change Username</h1>
-      <div class="grid-container">
-        <div class="grid-item">
-          <label>New Username</label>
-          <input type="username" id="username" value={playerInfo[0].username} />
+      <div class="section">
+        <h1>Change Username</h1>
+        <div class="grid-container">
+          <div class="grid-item">
+            <label>New Username</label>
+            <input type="text" id="username" value={playerInfo[0].username} />
+          </div>
+        </div>
+
+        <h1>Change Password</h1>
+        <div class="grid-container">
+          <div class="grid-item">
+            <label>Old Password</label>
+            <input type="text" id="oldPassword" />
+          </div>
+          <div class="grid-item">
+            <label>New Password</label>
+            <input type="text" id="newPassword" />
+          </div>
+          <div class="grid-item">
+            <label>Confirm New Password</label>
+            <input type="text" id="confirmNewPassword" />
+          </div>
+          <div class="grid-item">
+            <button class="primaryBtn">Save Changes</button>
+          </div>
         </div>
       </div>
 
-      <h1>Change Password</h1>
-      <div class="grid-container">
-        <div class="grid-item">
-          <label>Old Password</label>
-          <input type="oldPassword" id="oldPassword" />
-        </div>
-        <div class="grid-item">
-          <label>New Password</label>
-          <input type="newPassword" id="newPassword" />
-        </div>
-        <div class="grid-item">
-          <label>Confirm New Password</label>
-          <input type="confirmNewPassword" id="confirmNewPassword" />
-        </div>
-        <div class="grid-item">
-          <button class="primaryBtn">Save Changes</button>
-          <button class="primaryBtn">Logout</button>
-          <button class="dangerBtn">Delete Account</button>
+      <div class="section section-danger">
+        <div class="grid-container">
+          <div class="grid-item">
+            <h1>Danger Zone</h1>
+            <button class="primaryBtn">Logout</button>
+            <button class="dangerBtn">Delete Account</button>
+          </div>
         </div>
       </div>
     </div>
