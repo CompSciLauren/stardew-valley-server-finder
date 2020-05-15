@@ -45,7 +45,9 @@ const Profile = () => {
       }),
     });
 
-    console.log('hit!!!');
+    alert(
+      'Your changes have been saved! Logout and back in to see the changes.'
+    );
   };
 
   return (

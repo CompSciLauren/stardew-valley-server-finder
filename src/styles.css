@@ -44,10 +44,20 @@ button {
   color: #eff8ff;
 }
 
+.primaryBtn:hover {
+  background-color: #2779bd;
+  transition: 0.3s;
+}
+
 .dangerBtn {
   background-color: #e3342f;
   color: #621b18;
   font-weight: bold;
+}
+
+.dangerBtn:hover {
+  background-color: #cc1f1a;
+  transition: 0.3s;
 }
 
 .largeInputField {
