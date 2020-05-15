@@ -72,7 +72,7 @@ button {
 }
 
 .section {
-  border-top: 5px solid #3490dc;
+  border-top: 10px solid #3490dc;
   max-width: 875px;
   border-radius: 8px;
   box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
@@ -82,5 +82,5 @@ button {
 }
 
 .section-danger {
-  border-top: 5px solid #e3342f;
+  border-top: 10px solid #e3342f;
 }

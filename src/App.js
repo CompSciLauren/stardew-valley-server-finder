@@ -9,18 +9,21 @@ import usePlayerModService from './hooks/usePlayerModService';
 import { NavLink, Switch, Route } from 'react-router-dom';
 import Login from './pages/Login';
 import Profile from './pages/Profile';
+import useAuth, { AuthProvider } from './hooks/useAuth';
 
 const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src="main_logo.png" className="App-logo" alt="logo" />
-        <p>Stardew Valley Server Finder</p>
-      </header>
+    <AuthProvider>
+      <div className="App">
+        <header className="App-header">
+          <img src="main_logo.png" className="App-logo" alt="logo" />
+          <p>Stardew Valley Server Finder</p>
+        </header>
 
-      <Navigation />
-      <Main />
-    </div>
+        <Navigation />
+        <Main />
+      </div>
+    </AuthProvider>
   );
 };
 
@@ -425,27 +428,37 @@ const Mods = () => {
   );
 };
 
-const Navigation = () => (
-  <nav>
-    <ul>
-      <li>
-        <NavLink to="/">Home</NavLink>
-      </li>
-      <li>
-        <NavLink to="/mods">Mods</NavLink>
-      </li>
-      <li>
-        <NavLink to="/profile">Profile</NavLink>
-      </li>
-      <li>
-        <NavLink to="/login">Login</NavLink>
-      </li>
-      <li>
-        <NavLink to="/login">Logout</NavLink>
-      </li>
-    </ul>
-  </nav>
-);
+const Navigation = () => {
+  const auth = useAuth();
+  console.log(auth);
+
+  return (
+    <nav>
+      <ul>
+        <li>
+          <NavLink to="/">Home</NavLink>
+        </li>
+        <li>
+          <NavLink to="/mods">Mods</NavLink>
+        </li>
+        {auth.isLoggedIn && (
+          <li>
+            <NavLink to="/profile">Profile</NavLink>
+          </li>
+        )}
+        <li>
+          {!auth.isLoggedIn ? (
+            <NavLink to="/login">Login</NavLink>
+          ) : (
+            <NavLink onClick={auth.logout} to="/login">
+              Logout
+            </NavLink>
+          )}
+        </li>
+      </ul>
+    </nav>
+  );
+};
 
 const Main = () => (
   <Switch>

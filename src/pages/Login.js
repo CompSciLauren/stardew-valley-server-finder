@@ -1,7 +1,15 @@
 import React, { useState } from 'react';
+import { Redirect } from 'react-router-dom';
 //import Profile from './Profile';
+import useAuth from '../hooks/useAuth';
 
 const Login = () => {
+  const auth = useAuth();
+  const [
+    shouldRedirectForSuccessfulLogin,
+    setShouldRedirectForSuccessfulLogin,
+  ] = useState(false);
+
   const [state, setState] = useState({
     username: '',
     password: '',
@@ -17,13 +25,27 @@ const Login = () => {
 
   const handleSubmitClick = (e) => {
     e.preventDefault();
-    if (state.username === 'CompSciLauren' && state.password === 'mypassword') {
-      console.log('Success');
-      //navigate(Profile);
-    } else {
-      console.log('Failed to login');
-    }
+    auth
+      .attemptLogin(state.username, state.password)
+      .then(() => {
+        setShouldRedirectForSuccessfulLogin(true);
+      })
+      .catch(() => {
+        alert('Incorrect username or password');
+      });
+
+    // if (state.username === 'CompSciLauren' && state.password === 'mypassword') {
+    // console.log('Success');
+    //navigate(Profile);
+
+    // } else {
+    console.log('Failed to login');
+    // }
   };
+
+  if (shouldRedirectForSuccessfulLogin) {
+    return <Redirect to="/profile" />;
+  }
 
   return (
     <div>
