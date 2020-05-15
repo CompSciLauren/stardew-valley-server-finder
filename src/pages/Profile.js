@@ -31,7 +31,7 @@ const Profile = () => {
           <div className="grid-item">
             <label>Status</label>
             <p>
-              {/* {playerInfo.playerStatuses.map((status) => (
+              {playerInfo.statuses.map((status) => (
                 <p key={playerInfo.username + ':' + status}>
                   {status}
                   <input
@@ -40,7 +40,7 @@ const Profile = () => {
                     name="statusCheckbox"
                   ></input>
                 </p>
-              ))} */}
+              ))}
             </p>
           </div>
           <div className="grid-item">
