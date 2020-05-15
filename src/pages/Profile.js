@@ -204,7 +204,12 @@ const Profile = () => {
           </div>
           <div className="grid-item"></div>
           <div className="grid-item">
-            <button className="primaryBtn">Save Changes</button>
+            <button
+              className="primaryBtn"
+              onClick={() => alert('Sorry, this has not been implemented yet.')}
+            >
+              Save Changes
+            </button>
           </div>
         </div>
       </div>
