@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import useAuth from '../hooks/useAuth';
+import '../styles.css';
 
 const Login = () => {
   const auth = useAuth();
@@ -47,31 +48,35 @@ const Login = () => {
   }
 
   return (
-    <div>
-      <p>Please Enter Your Username and Password</p>
-      <form>
-        <label>
-          Username:
+    <div className="login-section">
+      <h1>Sign in to your account</h1>
+      <div className="login-grid-container">
+        <div className="grid-item">
+          <label>Username</label>
           <input
-            type="username"
+            type="text"
             id="username"
-            placeholder="Enter username"
+            placeholder="Enter your username"
             value={state.username}
             onChange={handleChange}
           />
-        </label>
-        <label>
-          Password:
+        </div>
+        <div className="grid-item">
+          <label>Password</label>
           <input
             type="password"
             id="password"
-            placeholder="Password"
+            placeholder="Enter your password"
             value={state.password}
             onChange={handleChange}
           />
-        </label>
-        <input type="submit" value="Submit" onClick={handleSubmitClick} />
-      </form>
+        </div>
+        <div className="grid-item">
+          <button className="primaryBtn" onClick={handleSubmitClick}>
+            Sign in
+          </button>
+        </div>
+      </div>
     </div>
   );
 };
