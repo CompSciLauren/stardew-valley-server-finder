@@ -56,7 +56,18 @@ const Profile = () => {
           }),
         });
 
-        // add fetch for change password
+        // change password
+        fetch(`/api/login/${auth.user.id}`, {
+          method: 'POST',
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            password: state.password,
+            id: auth.user.id,
+          }),
+        });
 
         alert(
           'Your changes have been saved! Logout and back in to see the changes.'
@@ -94,17 +105,17 @@ const Profile = () => {
         state.username === auth.user.username &&
         state.password === state.confirmPassword
       ) {
-        // fetch(`/api/player/${auth.user.id}`, {
-        //   method: 'POST',
-        //   headers: {
-        //     Accept: 'application/json',
-        //     'Content-Type': 'application/json',
-        //   },
-        //   body: JSON.stringify({
-        //     username: state.username,
-        //     id: auth.user.id,
-        //   }),
-        // });
+        fetch(`/api/login/${auth.user.id}`, {
+          method: 'POST',
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            password: state.password,
+            id: auth.user.id,
+          }),
+        });
 
         alert(
           'Your changes have been saved! Logout and back in to see the changes.'
