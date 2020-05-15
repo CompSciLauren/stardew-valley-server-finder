@@ -20,13 +20,11 @@ const AuthProvider = (props) => {
           password,
         }),
       })
-        .then((response) => {
+        .then(async (response) => {
           if (response.status === 200) {
+            const body = await response.json();
             setIsLoggedIn(true);
-            setUser({
-              id: response.id,
-              user: response.username,
-            });
+            setUser(body[0]);
             resolve();
           } else {
             reject();
