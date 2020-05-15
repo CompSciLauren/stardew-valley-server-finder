@@ -264,7 +264,12 @@ const Profile = () => {
         <h1>Danger Zone</h1>
         <div className="grid-container">
           <div className="grid-item">
-            <button className="dangerBtn">Delete Account</button>
+            <button
+              className="dangerBtn"
+              onClick={() => alert('Sorry, this has not been implemented yet.')}
+            >
+              Delete Account
+            </button>
           </div>
         </div>
       </div>
