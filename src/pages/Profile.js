@@ -49,6 +49,7 @@ const Profile = () => {
           // username and password were successfully changed
           if (
             state.username !== auth.user.username &&
+            state.password !== '' &&
             state.password === state.confirmPassword
           ) {
             // change username
