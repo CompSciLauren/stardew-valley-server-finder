@@ -11,6 +11,7 @@ const Profile = () => {
   const [state, setState] = useState({
     username: auth?.user?.username,
     password: '',
+    confirmPassword: '',
   });
 
   if (!auth.isLoggedIn) {
@@ -33,21 +34,87 @@ const Profile = () => {
 
   const handleSubmitClick = (e) => {
     e.preventDefault();
-    fetch(`/api/player/${auth.user.id}`, {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        username: state.username,
-        id: auth.user.id,
-      }),
-    });
+    // no changes were made
+    if (state.username === auth.user.username && state.password === '') {
+      alert("You didn't make any changes!");
+    } else {
+      // username and password were successfully changed
+      if (
+        state.username !== auth.user.username &&
+        state.password === state.confirmPassword
+      ) {
+        // change username
+        fetch(`/api/player/${auth.user.id}`, {
+          method: 'POST',
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            username: state.username,
+            id: auth.user.id,
+          }),
+        });
 
-    alert(
-      'Your changes have been saved! Logout and back in to see the changes.'
-    );
+        // add fetch for change password
+
+        alert(
+          'Your changes have been saved! Logout and back in to see the changes.'
+        );
+      }
+      // username changed, password incorrect
+      else if (
+        state.username !== auth.user.username &&
+        state.password !== state.confirmPassword
+      ) {
+        alert(
+          'You need to type the same password under password and confirm password. Try again.'
+        );
+      }
+      // only username was changed
+      else if (state.username !== auth.user.username && state.password === '') {
+        fetch(`/api/player/${auth.user.id}`, {
+          method: 'POST',
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            username: state.username,
+            id: auth.user.id,
+          }),
+        });
+
+        alert(
+          'Your changes have been saved! Logout and back in to see the changes.'
+        );
+      }
+      // only password was changed
+      else if (
+        state.username === auth.user.username &&
+        state.password === state.confirmPassword
+      ) {
+        // fetch(`/api/player/${auth.user.id}`, {
+        //   method: 'POST',
+        //   headers: {
+        //     Accept: 'application/json',
+        //     'Content-Type': 'application/json',
+        //   },
+        //   body: JSON.stringify({
+        //     username: state.username,
+        //     id: auth.user.id,
+        //   }),
+        // });
+
+        alert(
+          'Your changes have been saved! Logout and back in to see the changes.'
+        );
+      } else {
+        alert(
+          'You need to type the same password under password and confirm password. Try again.'
+        );
+      }
+    }
   };
 
   return (
@@ -135,11 +202,21 @@ const Profile = () => {
           </div>
           <div className="grid-item">
             <label>New Password</label>
-            <input type="text" id="newPassword" />
+            <input
+              type="text"
+              id="password"
+              value={state.password}
+              onChange={handleChange}
+            />
           </div>
           <div className="grid-item">
-            <label>Confirm New Password</label>
-            <input type="text" id="confirmNewPassword" />
+            <label>Confirm Password</label>
+            <input
+              type="text"
+              id="confirmPassword"
+              value={state.confirmPassword}
+              onChange={handleChange}
+            />
           </div>
           <div className="grid-item">
             <button className="primaryBtn" onClick={handleSubmitClick}>
