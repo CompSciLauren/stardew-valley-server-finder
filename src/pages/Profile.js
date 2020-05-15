@@ -110,9 +110,9 @@ const Profile = () => {
       </div>
 
       <div class="section section-danger">
+        <h1>Danger Zone</h1>
         <div class="grid-container">
           <div class="grid-item">
-            <h1>Danger Zone</h1>
             <button class="dangerBtn">Delete Account</button>
           </div>
         </div>
