@@ -24,9 +24,8 @@ const AuthProvider = (props) => {
           if (response.status === 200) {
             setIsLoggedIn(true);
             setUser({
-              user: 'CompSciLauren',
-              email: 'compscilauren@gmail.com',
-              realName: 'Lauren Stephenson',
+              id: response.id,
+              user: response.username,
             });
             resolve();
           } else {
