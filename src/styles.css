@@ -73,12 +73,12 @@ button {
 
 .section {
   border-top: 5px solid #3490dc;
-  margin-left: 300px;
-  margin-top: 30px;
-  margin-bottom: 30px;
   max-width: 875px;
   border-radius: 8px;
   box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
+  margin: 0 auto;
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 
 .section-danger {
