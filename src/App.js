@@ -435,10 +435,13 @@ const Navigation = () => (
         <NavLink to="/mods">Mods</NavLink>
       </li>
       <li>
-        <NavLink to="/login">Account</NavLink>
+        <NavLink to="/profile">Profile</NavLink>
       </li>
       <li>
-        <NavLink to="/profile">Profile</NavLink>
+        <NavLink to="/login">Login</NavLink>
+      </li>
+      <li>
+        <NavLink to="/login">Logout</NavLink>
       </li>
     </ul>
   </nav>

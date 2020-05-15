@@ -113,7 +113,6 @@ const Profile = () => {
         <div class="grid-container">
           <div class="grid-item">
             <h1>Danger Zone</h1>
-            <button class="primaryBtn">Logout</button>
             <button class="dangerBtn">Delete Account</button>
           </div>
         </div>
