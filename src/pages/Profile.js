@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import useSpecificPlayer from '../hooks/useSpecificPlayer';
 import useAuth from '../hooks/useAuth';
@@ -8,6 +8,11 @@ const Profile = () => {
   const auth = useAuth();
   const { player, isLoading } = useSpecificPlayer(auth?.user?.id);
 
+  const [state, setState] = useState({
+    username: auth?.user?.username,
+    password: '',
+  });
+
   if (!auth.isLoggedIn) {
     return <Redirect to="/login" />;
   }
@@ -16,8 +21,32 @@ const Profile = () => {
     return <h1>Loading...</h1>;
   }
 
-  console.log('PLAYER:', player);
   const playerInfo = player;
+
+  const handleChange = (e) => {
+    const { id, value } = e.target;
+    setState((prevState) => ({
+      ...prevState,
+      [id]: value,
+    }));
+  };
+
+  const handleSubmitClick = (e) => {
+    e.preventDefault();
+    fetch(`/api/player/${auth.user.id}`, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        username: state.username,
+        id: auth.user.id,
+      }),
+    });
+
+    console.log('hit!!!');
+  };
 
   return (
     <div>
@@ -87,7 +116,12 @@ const Profile = () => {
         <div className="grid-container">
           <div className="grid-item">
             <label>New Username</label>
-            <input type="text" id="username" value={playerInfo.username} />
+            <input
+              type="text"
+              id="username"
+              value={state.username}
+              onChange={handleChange}
+            />
           </div>
         </div>
 
@@ -106,7 +140,9 @@ const Profile = () => {
             <input type="text" id="confirmNewPassword" />
           </div>
           <div className="grid-item">
-            <button className="primaryBtn">Save Changes</button>
+            <button className="primaryBtn" onClick={handleSubmitClick}>
+              Save Changes
+            </button>
           </div>
         </div>
       </div>

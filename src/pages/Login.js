@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
-//import Profile from './Profile';
 import useAuth from '../hooks/useAuth';
 
 const Login = () => {
@@ -72,7 +71,6 @@ const Login = () => {
           />
         </label>
         <input type="submit" value="Submit" onClick={handleSubmitClick} />
-        {/* <NavLink to="/profile">Profile</NavLink> */}
       </form>
     </div>
   );
