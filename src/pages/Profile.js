@@ -9,9 +9,12 @@ const Profile = () => {
   const { player, isLoading } = useSpecificPlayer(auth?.user?.id);
 
   const [state, setState] = useState({
+    initialUsername: auth?.user?.username,
     username: auth?.user?.username,
+    oldPassword: '',
     password: '',
     confirmPassword: '',
+    oldPasswordConfirmedToBeCorrect: false,
   });
 
   if (!auth.isLoggedIn) {
@@ -34,97 +37,111 @@ const Profile = () => {
 
   const handleSubmitClick = (e) => {
     e.preventDefault();
+
     // no changes were made
     if (state.username === auth.user.username && state.password === '') {
       alert("You didn't make any changes!");
     } else {
-      // username and password were successfully changed
-      if (
-        state.username !== auth.user.username &&
-        state.password === state.confirmPassword
-      ) {
-        // change username
-        fetch(`/api/player/${auth.user.id}`, {
-          method: 'POST',
-          headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            username: state.username,
-            id: auth.user.id,
-          }),
-        });
+      // check if old password was entered correctly
+      auth
+        .attemptLogin(state.initialUsername, state.oldPassword)
+        .then(() => {
+          // username and password were successfully changed
+          if (
+            state.username !== auth.user.username &&
+            state.password === state.confirmPassword
+          ) {
+            // change username
+            fetch(`/api/player/${auth.user.id}`, {
+              method: 'POST',
+              headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                username: state.username,
+                id: auth.user.id,
+              }),
+            });
 
-        // change password
-        fetch(`/api/login/${auth.user.id}`, {
-          method: 'POST',
-          headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            password: state.password,
-            id: auth.user.id,
-          }),
-        });
+            // change password
+            fetch(`/api/login/${auth.user.id}`, {
+              method: 'POST',
+              headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                password: state.password,
+                id: auth.user.id,
+              }),
+            });
 
-        alert(
-          'Your changes have been saved! Logout and back in to see the changes.'
-        );
-      }
-      // username changed, password incorrect
-      else if (
-        state.username !== auth.user.username &&
-        state.password !== state.confirmPassword
-      ) {
-        alert(
-          'You need to type the same password under password and confirm password. Try again.'
-        );
-      }
-      // only username was changed
-      else if (state.username !== auth.user.username && state.password === '') {
-        fetch(`/api/player/${auth.user.id}`, {
-          method: 'POST',
-          headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            username: state.username,
-            id: auth.user.id,
-          }),
-        });
+            alert(
+              'Your changes have been saved! Logout and back in to see the changes.'
+            );
+          }
+          // username changed, password incorrect
+          else if (
+            state.username !== auth.user.username &&
+            state.password !== state.confirmPassword
+          ) {
+            alert(
+              'You need to type the same password under password and confirm password. Try again.'
+            );
+          }
+          // only username was changed
+          else if (
+            state.username !== auth.user.username &&
+            state.password === ''
+          ) {
+            fetch(`/api/player/${auth.user.id}`, {
+              method: 'POST',
+              headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                username: state.username,
+                id: auth.user.id,
+              }),
+            });
 
-        alert(
-          'Your changes have been saved! Logout and back in to see the changes.'
-        );
-      }
-      // only password was changed
-      else if (
-        state.username === auth.user.username &&
-        state.password === state.confirmPassword
-      ) {
-        fetch(`/api/login/${auth.user.id}`, {
-          method: 'POST',
-          headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            password: state.password,
-            id: auth.user.id,
-          }),
-        });
+            alert(
+              'Your changes have been saved! Logout and back in to see the changes.'
+            );
+          }
+          // only password was changed
+          else if (
+            state.username === auth.user.username &&
+            state.password === state.confirmPassword
+          ) {
+            fetch(`/api/login/${auth.user.id}`, {
+              method: 'POST',
+              headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                password: state.password,
+                id: auth.user.id,
+              }),
+            });
 
-        alert(
-          'Your changes have been saved! Logout and back in to see the changes.'
-        );
-      } else {
-        alert(
-          'You need to type the same password under password and confirm password. Try again.'
-        );
-      }
+            alert(
+              'Your changes have been saved! Logout and back in to see the changes.'
+            );
+          } else {
+            alert(
+              'You need to type the same password under password and confirm password. Try again.'
+            );
+          }
+        })
+        .catch(() => {
+          alert(
+            'Old password entered is not the correct current password. Try again.'
+          );
+        });
     }
   };
 
@@ -209,7 +226,12 @@ const Profile = () => {
         <div className="grid-container">
           <div className="grid-item">
             <label>Old Password</label>
-            <input type="text" id="oldPassword" />
+            <input
+              type="text"
+              id="oldPassword"
+              value={state.oldPassword}
+              onChange={handleChange}
+            />
           </div>
           <div className="grid-item">
             <label>New Password</label>
