@@ -8,6 +8,10 @@
 2. Run `npm install`
 3. Run `npm start`
 
+## Presentation
+
+https://drive.google.com/file/d/1D82TSZjBdmOVl9hGGwdhhet7hMu-iGhT/view?usp=sharing
+
 ## Available Scripts
 
 In the project directory, you can run:
