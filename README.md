@@ -12,6 +12,12 @@
 
 https://drive.google.com/file/d/1D82TSZjBdmOVl9hGGwdhhet7hMu-iGhT/view?usp=sharing
 
+## Screenshot
+
+<h1 align="center">
+  <img width="455" src="https://github.com/compscilauren/stardew-valley-server-finder/blob/master/demo.png" alt="Stardew Valley Server Finder login screen">
+</h1>
+
 ## Available Scripts
 
 In the project directory, you can run:
